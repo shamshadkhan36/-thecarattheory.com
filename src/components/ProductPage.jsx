@@ -24,6 +24,15 @@ export const ProductPage = ({
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [addedToast, setAddedToast] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Reset gallery and options when selected product changes
+  React.useEffect(() => {
+    setSelectedImageIndex(0);
+    setSelectedColor('yellow');
+    setSelectedPurity('18K');
+    setImageLoaded(false);
+  }, [targetProduct?.id]);
 
   // Accordion State
   const [openAccordions, setOpenAccordions] = useState({
@@ -56,6 +65,7 @@ export const ProductPage = ({
   const handleColorSelect = (color) => {
     setSelectedColor(color.id);
     if (typeof color.imageIndex === 'number' && targetProduct.images && targetProduct.images[color.imageIndex]) {
+      setImageLoaded(false);
       setSelectedImageIndex(color.imageIndex);
     }
   };
@@ -130,10 +140,25 @@ export const ProductPage = ({
           {/* LEFT COLUMN: Image Gallery & Thumbnail Slider */}
           <div className="pdp-gallery-col">
             <div className="pdp-main-image-card">
+              {!imageLoaded && (
+                <div className="pdp-image-skeleton">
+                  <div className="pdp-skeleton-shimmer" />
+                </div>
+              )}
               <img
+                key={imagesList[selectedImageIndex]?.src || 'main-pdp-img'}
                 src={imagesList[selectedImageIndex]?.src || imagesList[0]?.src || '/assets/products/tct-three-stone-yellow.jpg'}
                 alt={imagesList[selectedImageIndex]?.alt || targetProduct.name}
-                className="pdp-main-img"
+                className={`pdp-main-img ${imageLoaded ? 'is-loaded' : 'is-loading'}`}
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
+                onLoad={() => setImageLoaded(true)}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = '/assets/products/tct-three-stone-yellow.jpg';
+                  setImageLoaded(true);
+                }}
               />
               {imagesList[selectedImageIndex]?.isVideo && (
                 <div className="pdp-video-play-center" title="360 Interactive Video View">
@@ -155,11 +180,26 @@ export const ProductPage = ({
                     <button
                       key={idx}
                       type="button"
-                      onClick={() => setSelectedImageIndex(idx)}
+                      onClick={() => {
+                        if (selectedImageIndex !== idx) {
+                          setImageLoaded(false);
+                          setSelectedImageIndex(idx);
+                        }
+                      }}
                       className={`pdp-thumb-btn ${isActive ? 'active-thumb' : ''}`}
                       title={img.alt || `View angle ${idx + 1}`}
                     >
-                      <img src={img.src} alt={img.alt || `Thumbnail ${idx + 1}`} className="pdp-thumb-img" />
+                      <img
+                        src={img.src}
+                        alt={img.alt || `Thumbnail ${idx + 1}`}
+                        className="pdp-thumb-img"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = '/assets/products/tct-three-stone-yellow.jpg';
+                        }}
+                      />
                       {img.isVideo && (
                         <span className="pdp-thumb-video-badge">
                           <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFFFFF">
