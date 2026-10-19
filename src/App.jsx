@@ -29,10 +29,10 @@ import { PRODUCTS_DATA, PRIMARY_PRODUCT } from './data/products';
 
 export function App() {
   const [currentView, setCurrentView] = useState(() => {
-    if (typeof window !== 'undefined' && window.location.hash.includes('home')) {
-      return 'home';
+    if (typeof window !== 'undefined' && window.location.hash.includes('product')) {
+      return 'product';
     }
-    return 'product'; // Default to product page as requested
+    return 'home';
   });
   const [selectedProduct, setSelectedProduct] = useState(PRIMARY_PRODUCT);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
@@ -42,9 +42,40 @@ export function App() {
   const [isSizingOpen, setIsSizingOpen] = useState(false);
   const [isLogoGuideOpen, setIsLogoGuideOpen] = useState(false);
 
+  React.useEffect(() => {
+    const handleHash = () => {
+      if (typeof window !== 'undefined') {
+        if (window.location.hash.includes('product')) {
+          setCurrentView('product');
+        } else if (window.location.hash.includes('home')) {
+          setCurrentView('home');
+        }
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const handleOpenAppointment = (subject = '') => {
     setAppointmentSubject(subject);
     setIsAppointmentOpen(true);
+  };
+
+  const handleSelectProduct = (prod) => {
+    setSelectedProduct(prod || PRIMARY_PRODUCT);
+    setCurrentView('product');
+    if (typeof window !== 'undefined') {
+      window.location.hash = 'product';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleGoHome = () => {
+    setCurrentView('home');
+    if (typeof window !== 'undefined') {
+      window.location.hash = 'home';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -55,14 +86,14 @@ export function App() {
             {/* 1. Announcement Bar (Soft Peach #FFF3E3 with Wine #55142A text) */}
             <AnnouncementBar
               currentView={currentView}
-              onToggleView={() => setCurrentView((v) => (v === 'product' ? 'home' : 'product'))}
+              onToggleView={() => (currentView === 'product' ? handleGoHome() : handleSelectProduct(PRIMARY_PRODUCT))}
             />
 
             {/* 2. Solid Wine Header (The Carat Theory Logo) */}
             <Header
               onOpenSearch={() => setIsSearchOpen(true)}
               onOpenAppointment={() => handleOpenAppointment()}
-              onNavigateHome={() => setCurrentView('home')}
+              onNavigateHome={handleGoHome}
             />
 
             {currentView === 'product' ? (
@@ -71,10 +102,7 @@ export function App() {
                 product={selectedProduct}
                 onOpenSizing={() => setIsSizingOpen(true)}
                 onOpenAppointment={() => handleOpenAppointment('Full-Value Buyback Policy Consultation')}
-                onSelectProduct={(p) => {
-                  setSelectedProduct(PRIMARY_PRODUCT);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
+                onSelectProduct={handleSelectProduct}
               />
             ) : (
               <>
@@ -87,11 +115,7 @@ export function App() {
                 {/* 5. BESTSELLERS (Matching Image 3: 4 Rings with Metal Purity & Color Dots) */}
                 <Bestsellers
                   onQuickView={setQuickViewProduct}
-                  onSelectProduct={(ring) => {
-                    setSelectedProduct(PRIMARY_PRODUCT);
-                    setCurrentView('product');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
+                  onSelectProduct={handleSelectProduct}
                 />
 
                 {/* 6. SHOP BY SHAPE (Matching Image 4: 8 Diamond Cuts) */}

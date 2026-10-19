@@ -19,8 +19,17 @@ export const CurrencyProvider = ({ children }) => {
     return cur.symbol + Math.round(converted).toLocaleString();
   };
 
+  const formatPrice = (amountINR, amountUSD) => {
+    if (currency === 'INR') {
+      const inr = amountINR || Math.round(amountUSD * 84.5);
+      return `Rs. ${Number(inr).toLocaleString('en-IN')}.00`;
+    }
+    const usd = amountUSD || Math.round(amountINR / 84.5);
+    return formatMoney(usd);
+  };
+
   return (
-    <CurrencyContext.Provider value={{ currency, setCurrency, formatMoney, rates: CURRENCY_RATES }}>
+    <CurrencyContext.Provider value={{ currency, setCurrency, formatMoney, formatPrice, rates: CURRENCY_RATES }}>
       {children}
     </CurrencyContext.Provider>
   );
