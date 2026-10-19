@@ -31,9 +31,6 @@ export const Bestsellers = ({ onQuickView, onSelectProduct }) => {
   };
 
   const formatPrice = (ring) => {
-    if (currency === 'INR') {
-      return `Rs. ${ring.priceINR.toLocaleString('en-IN')}.00`;
-    }
     return formatMoney(ring.priceUSD);
   };
 

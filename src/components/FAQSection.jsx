@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 
 const FAQS = [
   {
-    q: 'What is the return policy?',
-    a: 'We offer a 15-day return and exchange policy on all unworn, unaltered diamond jewellery accompanied by original security tags, certification, and packaging.'
+    q: 'What is the return & cancellation policy?',
+    a: 'We offer a 15-day return policy on standard, unworn, unaltered diamond jewellery accompanied by original security tags, certification, and packaging. Please note: Odd ring sizes (e.g., 6.5 standard, half sizes) and custom bespoke orders are made exclusively to order and carry a strict no-cancellation / non-refundable policy.'
   },
   {
-    q: 'Are any purchases final sale?',
-    a: 'Custom bespoke creations made to unique client specifications and engraved items are final sale, but remain fully eligible for our Lifetime Buyback Guarantee.'
+    q: 'Are odd ring sizes and custom orders eligible for cancellation?',
+    a: 'No. Odd ring sizes (e.g., 6.5, 7.5, etc.) and bespoke custom creations are crafted specifically to client specifications and cannot be cancelled or returned once casting commences. However, they remain fully covered by our Lifetime Care & Service Guarantee.'
   },
   {
-    q: 'When will I get my order?',
-    a: 'Ready-to-ship designs arrive in 3-5 business days via fully insured courier. Made-to-order pieces take approximately 10-14 business days from crafting to doorstep delivery.'
+    q: 'What does your Lifetime Care & Service Guarantee include?',
+    a: 'Every fine jewellery piece from The Carat Theory comes with complimentary lifetime servicing, including annual ultrasonic cleaning, claw prong inspections and tightening, rhodium polishing, and lifetime authenticity support.'
   },
   {
-    q: 'Where are your products manufactured?',
-    a: 'All pieces are cast and hand-set in our state-of-the-art atelier by master artisans utilizing recycled gold, 925 sterling silver, and ethically grown Type IIa diamonds.'
+    q: 'Where are your diamonds sourced and certified?',
+    a: 'All pieces are handset with ethically engineered, conflict-free Type IIa lab diamonds authenticated by premier international gemological laboratories (IGI and GIA) with laser-inscribed girdle certifications.'
   },
   {
-    q: 'How much does shipping cost?',
-    a: 'We offer 100% Free, Fully Insured Shipping on all orders across India and globally.'
+    q: 'How much does shipping cost and how long does it take?',
+    a: 'We offer 100% Free, Fully Insured Worldwide Express Shipping via secured armored transport. Ready designs arrive in 3-5 business days, and made-to-order creations take 10-14 business days.'
   }
 ];
 

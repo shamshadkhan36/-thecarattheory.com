@@ -101,7 +101,7 @@ export function App() {
               <ProductPage
                 product={selectedProduct}
                 onOpenSizing={() => setIsSizingOpen(true)}
-                onOpenAppointment={() => handleOpenAppointment('Full-Value Buyback Policy Consultation')}
+                onOpenAppointment={() => handleOpenAppointment('Lifetime Care & Dedicated Service Consultation')}
                 onSelectProduct={handleSelectProduct}
               />
             ) : (

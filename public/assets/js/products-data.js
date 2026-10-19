@@ -491,10 +491,10 @@ const BRAND_PILLARS = [
     description: "Every diamond above 0.50 ct is accompanied by an independent laboratory certificate and microscopic girdle laser inscription confirming optical purity Type IIa."
   },
   {
-    icon: "refresh-cw",
-    title: "Lifetime Buyback Assurance",
-    subtitle: "Guaranteed 100% Store Value",
-    description: "Our signature policy guarantees you can return or upgrade your piece at any stage of life with transparent fair market and store credit indices."
+    icon: "shield-check",
+    title: "Lifetime Care & Service Guarantee",
+    subtitle: "Complimentary Annual Maintenance",
+    description: "Every piece includes complimentary annual ultrasonic deep cleaning, prong re-tipping, rhodium polishing, and lifetime gemological verification."
   },
   {
     icon: "truck",

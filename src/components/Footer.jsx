@@ -33,11 +33,17 @@ export const Footer = ({ onOpenSizing, onOpenAppointment, onOpenLogoGuide }) => 
               alt="The Carat Theory"
               style={{ height: '48px', marginBottom: '1.25rem' }}
             />
-            <p style={{ fontSize: '0.85rem', lineHeight: '1.7', color: '#E2C2CB', marginBottom: '1.25rem' }}>
+            <p style={{ fontSize: '0.85rem', lineHeight: '1.7', color: '#E2C2CB', marginBottom: '1rem' }}>
               The Carat Theory represents the pure convergence of optical physics, master diamond craftsmanship, and conflict-free lab engineered stones.
             </p>
-            <div style={{ fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--c-peach)' }}>
+            <div style={{ fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--c-peach)', marginBottom: '1rem' }}>
               ✦ IGI &amp; GIA Certified · Antwerp &amp; New York
+            </div>
+            {/* Atelier & Contact Details */}
+            <div style={{ fontSize: '0.8rem', color: '#E2C2CB', lineHeight: '1.7', borderTop: '1px solid rgba(255,243,227,0.15)', paddingTop: '0.85rem' }}>
+              <div><strong>Email:</strong> <a href="mailto:concierge@thecarattheory.com" style={{ color: 'var(--c-peach)' }}>concierge@thecarattheory.com</a></div>
+              <div><strong>Direct Line:</strong> +1 (800) 582-0190</div>
+              <div><strong>Ateliers:</strong> 580 Fifth Ave, New York &amp; Antwerp</div>
             </div>
           </div>
 
@@ -71,10 +77,10 @@ export const Footer = ({ onOpenSizing, onOpenAppointment, onOpenLogoGuide }) => 
           <div className="footer-col">
             <h5>Our Policies</h5>
             <ul>
-              <li><a href="#promises">Lifetime Buyback Policy</a></li>
-              <li><a href="#promises">Exchange &amp; Upgrade</a></li>
+              <li><a href="#promises">Lifetime Care &amp; Service</a></li>
+              <li><a href="#promises">T&amp;C &mdash; Custom &amp; Odd Sizes</a></li>
               <li><a href="#promises">Complimentary Insured Shipping</a></li>
-              <li><a href="#promises">Return &amp; Refund Policy</a></li>
+              <li><a href="#promises">Return &amp; Cancellation Policy</a></li>
               <li><a href="#">Terms of Service</a></li>
               <li><a href="#">Privacy Policy</a></li>
             </ul>

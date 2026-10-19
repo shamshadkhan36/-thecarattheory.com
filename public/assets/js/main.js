@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <ul style="list-style: none; font-size: 0.8rem; color: #4B5563;">
               <li style="margin-bottom: 0.35rem;">✦ <strong>Certification:</strong> ${prod.certification}</li>
               <li style="margin-bottom: 0.35rem;">✦ <strong>Optical Grading:</strong> ${prod.diamondGrade}</li>
-              <li>✦ <strong>Guarantee:</strong> Lifetime Buyback &amp; 100% Conflict-Free</li>
+              <li>✦ <strong>Guarantee:</strong> Lifetime Care &amp; Service Guarantee</li>
             </ul>
           </div>
 

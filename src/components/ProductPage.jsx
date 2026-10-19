@@ -49,16 +49,13 @@ export const ProductPage = ({
     }));
   };
 
-  // Safe price formatting helper
-  const displayPrice = (amountINR, amountUSD) => {
-    if (typeof currencyCtx.formatPrice === 'function') {
-      return currencyCtx.formatPrice(amountINR, amountUSD);
-    }
+  // Safe price formatting helper in USD
+  const displayPrice = (amountUSD) => {
     if (typeof currencyCtx.formatMoney === 'function' && amountUSD) {
       return currencyCtx.formatMoney(amountUSD);
     }
-    const val = amountINR || (amountUSD ? Math.round(amountUSD * 84.5) : 79420);
-    return `Rs. ${Number(val).toLocaleString('en-IN')}.00`;
+    const val = amountUSD || 940;
+    return `$${Number(val).toLocaleString('en-US')}`;
   };
 
   // Color selection switches active color and primary view
@@ -70,8 +67,8 @@ export const ProductPage = ({
     }
   };
 
-  // Price calculations based on selected purity
-  const currentPrice = targetProduct.pricesByPurity?.[selectedPurity] || targetProduct.priceINR || 79420;
+  // Price calculations based on selected purity (in USD)
+  const currentPrice = targetProduct.pricesByPurity?.[selectedPurity] || targetProduct.priceUSD || 940;
 
   const handleAddToCart = (openDrawer = true) => {
     const mainImg = (targetProduct.images && targetProduct.images[selectedImageIndex]?.src) ||
@@ -79,15 +76,15 @@ export const ProductPage = ({
       '/assets/products/tct-three-stone-yellow.jpg';
 
     addToCart({
-      id: `${targetProduct.id}-${selectedPurity}-${selectedColor}-${selectedSize || 'Standard'}`,
+      id: `${targetProduct.id}-${selectedPurity}-${selectedColor}-${selectedSize || 'US 6.5'}`,
       productId: targetProduct.id,
       name: `${targetProduct.name} (${selectedPurity} - ${selectedColor.toUpperCase()})`,
-      priceINR: currentPrice,
-      priceUSD: Math.round(currentPrice / 84.5),
+      price: currentPrice,
+      priceUSD: currentPrice,
       image: mainImg,
       metal: selectedPurity,
       color: selectedColor,
-      size: selectedSize || 'Standard Size'
+      size: selectedSize || 'US 6.5 (Standard Size)'
     }, quantity);
 
     setAddedToast(true);
@@ -222,7 +219,7 @@ export const ProductPage = ({
                 <h1 className="pdp-product-title">{targetProduct.name}</h1>
                 <div className="pdp-price-row">
                   <span className="pdp-price-tag">
-                    {displayPrice(currentPrice, Math.round(currentPrice / 84.5))}
+                    {displayPrice(currentPrice)}
                   </span>
                   <span className="pdp-tax-inclusive">Inclusive of all taxes &amp; insured shipping</span>
                 </div>
@@ -276,19 +273,27 @@ export const ProductPage = ({
                   value={selectedSize}
                   onChange={(e) => setSelectedSize(e.target.value)}
                 >
-                  <option value="">Select Size</option>
-                  <option value="Size 6 (14.5 mm)">Size 6 (14.5 mm)</option>
-                  <option value="Size 7 (15.0 mm)">Size 7 (15.0 mm)</option>
-                  <option value="Size 8 (15.5 mm)">Size 8 (15.5 mm)</option>
-                  <option value="Size 9 (16.0 mm)">Size 9 (16.0 mm)</option>
-                  <option value="Size 10 (16.5 mm)">Size 10 (16.5 mm)</option>
-                  <option value="Size 11 (17.0 mm)">Size 11 (17.0 mm)</option>
-                  <option value="Size 12 (17.5 mm)">Size 12 (17.5 mm)</option>
-                  <option value="Size 13 (18.0 mm)">Size 13 (18.0 mm)</option>
-                  <option value="Size 14 (18.5 mm)">Size 14 (18.5 mm)</option>
-                  <option value="Size 15 (19.0 mm)">Size 15 (19.0 mm)</option>
-                  <option value="Size 16 (19.5 mm)">Size 16 (19.5 mm)</option>
+                  <option value="">Select Ring Size</option>
+                  <option value="US 4 (14.9 mm)">US 4 (14.9 mm)</option>
+                  <option value="US 4.5 (15.3 mm)">US 4.5 (15.3 mm) - Custom Odd Size</option>
+                  <option value="US 5 (15.7 mm)">US 5 (15.7 mm)</option>
+                  <option value="US 5.5 (16.1 mm)">US 5.5 (16.1 mm) - Custom Odd Size</option>
+                  <option value="US 6 (16.5 mm)">US 6 (16.5 mm)</option>
+                  <option value="US 6.5 (16.9 mm)">US 6.5 (16.9 mm) - Standard Size (Usual Ring Size)</option>
+                  <option value="US 7 (17.3 mm)">US 7 (17.3 mm)</option>
+                  <option value="US 7.5 (17.7 mm)">US 7.5 (17.7 mm) - Custom Odd Size</option>
+                  <option value="US 8 (18.1 mm)">US 8 (18.1 mm)</option>
+                  <option value="US 8.5 (18.5 mm)">US 8.5 (18.5 mm) - Custom Odd Size</option>
+                  <option value="US 9 (18.9 mm)">US 9 (18.9 mm)</option>
+                  <option value="US 9.5 (19.4 mm)">US 9.5 (19.4 mm) - Custom Odd Size</option>
+                  <option value="US 10 (19.8 mm)">US 10 (19.8 mm)</option>
                 </select>
+
+                {/* T&C Notice for Odd Ring Sizes & Custom Orders */}
+                <div className="pdp-size-tc-notice">
+                  <span className="pdp-tc-badge">T&amp;C</span>
+                  Odd ring sizes (e.g. 6.5 standard) and custom bespoke orders are made exclusively to order &mdash; <strong>Strictly No Cancellations or Returns</strong>.
+                </div>
 
                 {/* Helper Links Matching Reference */}
                 <div className="pdp-size-links">
@@ -302,8 +307,8 @@ export const ProductPage = ({
                       Open Size Guide &rarr;
                     </button>
                   </div>
-                  <div className="pdp-buyback-policy-link">
-                    India's First Lifetime Full-Value Buyback Policy{' '}
+                  <div className="pdp-service-support-link">
+                    ✦ Lifetime Care &amp; Dedicated Service Guarantee{' '}
                     <button
                       type="button"
                       onClick={onOpenAppointment}
@@ -466,7 +471,7 @@ export const ProductPage = ({
                   </button>
                   {openAccordions.shipping && (
                     <div className="pdp-accordion-content">
-                      <p>{targetProduct.shippingInfo || 'Complimentary insured express delivery in 3-5 business days across India. Ships via insured armored transport with discrete tamper-evident luxury presentation packaging.'}</p>
+                      <p>{targetProduct.shippingInfo || 'Complimentary insured express delivery in 3-5 business days worldwide. Ships via insured armored transport with discrete tamper-evident luxury presentation packaging. Odd ring sizes (e.g. 6.5) and custom orders are crafted exclusively to order with no cancellations.'}</p>
                     </div>
                   )}
                 </div>
@@ -521,7 +526,7 @@ export const ProductPage = ({
                   <div className="pdp-related-info">
                     <h3 className="pdp-related-name">{item.name}</h3>
                     <div className="pdp-related-price">
-                      {displayPrice(item.priceINR, item.priceUSD)}
+                      {displayPrice(item.priceUSD)}
                     </div>
 
                     {/* Purity Buttons */}

@@ -113,6 +113,16 @@ export const AppointmentModal = ({ isOpen, onClose, initialSubject = '' }) => {
             <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
               Confirm Appointment
             </button>
+
+            <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--c-border)', fontSize: '0.8rem', color: 'var(--c-text-muted)', lineHeight: '1.6' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.4rem' }}>
+                <span><strong>Email:</strong> <a href="mailto:concierge@thecarattheory.com" style={{ color: 'var(--c-wine)' }}>concierge@thecarattheory.com</a></span>
+                <span><strong>Phone:</strong> +1 (800) 582-0190</span>
+              </div>
+              <div>
+                <strong>Ateliers:</strong> 580 Fifth Ave, New York, NY 10036 &bull; Hoveniersstraat 55, Antwerp
+              </div>
+            </div>
           </form>
         )}
       </div>

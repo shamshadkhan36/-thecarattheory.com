@@ -102,8 +102,8 @@ export const CartDrawer = () => {
               <span>Subtotal</span>
               <span style={{ color: 'var(--c-wine)' }}>{formatMoney(subtotal)}</span>
             </div>
-            <p style={{ fontSize: '0.72rem', color: 'var(--c-text-muted)', marginBottom: '1rem' }}>
-              Taxes &amp; Armored Insurance calculated at checkout. Lifetime Buyback guarantee applies.
+            <p style={{ fontSize: '0.72rem', color: 'var(--c-text-muted)', marginBottom: '1rem', lineHeight: '1.4' }}>
+              Taxes &amp; Armored Insurance calculated at checkout. Lifetime Care &amp; Service Guarantee applies. Odd ring sizes (e.g. 6.5) &amp; custom orders are final sale with no cancellations.
             </p>
             <button
               onClick={() => alert('Proceeding to Encrypted 256-bit Secure Checkout...')}

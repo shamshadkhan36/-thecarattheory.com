@@ -6,8 +6,8 @@ export const CURRENCY_RATES = {
   USD: { symbol: '$', rate: 1.0, label: 'USD ($)' },
   EUR: { symbol: '€', rate: 0.92, label: 'EUR (€)' },
   GBP: { symbol: '£', rate: 0.79, label: 'GBP (£)' },
-  INR: { symbol: '₹', rate: 84.5, label: 'INR (₹)' },
-  AED: { symbol: 'AED ', rate: 3.67, label: 'AED (AED)' }
+  CAD: { symbol: 'CA$', rate: 1.36, label: 'CAD ($)' },
+  AUD: { symbol: 'AU$', rate: 1.52, label: 'AUD ($)' }
 };
 
 export const CurrencyProvider = ({ children }) => {
@@ -15,17 +15,13 @@ export const CurrencyProvider = ({ children }) => {
 
   const formatMoney = (amountUSD) => {
     const cur = CURRENCY_RATES[currency] || CURRENCY_RATES.USD;
-    const converted = amountUSD * cur.rate;
-    return cur.symbol + Math.round(converted).toLocaleString();
+    const converted = (amountUSD || 0) * cur.rate;
+    return cur.symbol + Math.round(converted).toLocaleString('en-US');
   };
 
-  const formatPrice = (amountINR, amountUSD) => {
-    if (currency === 'INR') {
-      const inr = amountINR || Math.round(amountUSD * 84.5);
-      return `Rs. ${Number(inr).toLocaleString('en-IN')}.00`;
-    }
-    const usd = amountUSD || Math.round(amountINR / 84.5);
-    return formatMoney(usd);
+  const formatPrice = (amountUSD, amountAlt) => {
+    const target = amountUSD || (amountAlt ? Math.round(amountAlt / 84.5) : 940);
+    return formatMoney(target);
   };
 
   return (

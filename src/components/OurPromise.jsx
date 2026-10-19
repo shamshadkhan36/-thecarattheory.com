@@ -2,8 +2,8 @@ import React from 'react';
 
 const PROMISES = [
   {
-    title: 'LIFETIME BUYBACK',
-    subtitle: 'A Policy, made for you.',
+    title: 'LIFETIME CARE & SERVICE',
+    subtitle: 'Complimentary maintenance, ultrasonic cleaning & inspection for life.',
     icon: (
       <svg width="44" height="44" viewBox="0 0 20 20" fill="#55142A">
         <path
@@ -15,7 +15,7 @@ const PROMISES = [
   },
   {
     title: 'CERTIFIED JEWELRY',
-    subtitle: 'Pure. Promise. Certified',
+    subtitle: 'Pure. Promise. Certified. (IGI & GIA Authenticated)',
     icon: (
       <div
         style={{
@@ -29,8 +29,8 @@ const PROMISES = [
     )
   },
   {
-    title: 'FREE SHIPPING',
-    subtitle: 'Pure Service. Promised Delivery.',
+    title: 'FREE INSURED SHIPPING',
+    subtitle: 'Worldwide Armored Express Delivery to Your Doorstep.',
     icon: (
       <div
         style={{
@@ -44,8 +44,8 @@ const PROMISES = [
     )
   },
   {
-    title: 'EXCHANGE & UPGRADE',
-    subtitle: 'Pure Flexibility. With a promise to evolve.',
+    title: 'LIFETIME SUPPORT',
+    subtitle: 'Dedicated gemologist concierge & authenticity guarantee.',
     icon: (
       <div
         style={{
