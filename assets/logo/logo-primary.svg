@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C5A059" />
+      <stop offset="25%" stop-color="#EED59B" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="75%" stop-color="#FDF0CD" />
+      <stop offset="100%" stop-color="#A27D34" />
+    </linearGradient>
+    <linearGradient id="subtleShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#C5A059" stop-opacity="0.3" />
+    </linearGradient>
+    <filter id="luxuryGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- LOGO ICON / EMBLEM -->
+  <g transform="translate(18, 12)">
+    <!-- Outer Hexagonal / Octagonal Diamond Crown Shield -->
+    <path d="M 48 4 L 78 22 L 78 66 L 48 92 L 18 66 L 18 22 Z" 
+          fill="none" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linejoin="round" />
+    
+    <!-- Table facet (top flat diamond cut) -->
+    <polygon points="32,22 64,22 72,38 24,38" 
+             fill="none" stroke="url(#goldGrad)" stroke-width="1.6" stroke-linejoin="round" opacity="0.9" />
+             
+    <!-- Star facets & Star Light -->
+    <polygon points="48,8 60,22 48,32 36,22" 
+             fill="url(#goldGrad)" opacity="0.25" />
+    <polygon points="48,8 60,22 48,32 36,22" 
+             fill="none" stroke="url(#goldGrad)" stroke-width="1.4" />
+             
+    <!-- Center Carat Theory Geometric Node (Abstract C & T Nexus) -->
+    <line x1="48" y1="32" x2="48" y2="82" stroke="url(#goldGrad)" stroke-width="1.8" />
+    <line x1="28" y1="48" x2="68" y2="48" stroke="url(#goldGrad)" stroke-width="1.6" />
+    
+    <!-- Lower Pavilion facets converging to culet -->
+    <line x1="18" y1="66" x2="48" y2="88" stroke="url(#goldGrad)" stroke-width="1.5" />
+    <line x1="78" y1="66" x2="48" y2="88" stroke="url(#goldGrad)" stroke-width="1.5" />
+    <line x1="24" y1="38" x2="48" y2="48" stroke="url(#goldGrad)" stroke-width="1.3" opacity="0.8" />
+    <line x1="72" y1="38" x2="48" y2="48" stroke="url(#goldGrad)" stroke-width="1.3" opacity="0.8" />
+    <line x1="28" y1="48" x2="48" y2="88" stroke="url(#goldGrad)" stroke-width="1.4" opacity="0.85" />
+    <line x1="68" y1="48" x2="48" y2="88" stroke="url(#goldGrad)" stroke-width="1.4" opacity="0.85" />
+    
+    <!-- Central brilliant light spark point -->
+    <circle cx="48" cy="48" r="2.8" fill="#FFF5DC" filter="url(#luxuryGlow)" />
+    
+    <!-- Accent Sparkle Starlet -->
+    <path d="M 82 14 Q 85 20 91 22 Q 85 24 82 30 Q 80 24 74 22 Q 80 20 82 14 Z" 
+          fill="url(#goldGrad)" opacity="0.85" />
+  </g>
+
+  <!-- BRAND NAME TYPOGRAPHY -->
+  <g transform="translate(130, 0)">
+    <!-- Primary Brand Wordmark -->
+    <text x="0" y="58" 
+          font-family="'Playfair Display', 'Cormorant Garamond', 'Cinzel', 'Baskerville', 'Georgia', serif" 
+          font-size="34" 
+          font-weight="500" 
+          letter-spacing="0.22em" 
+          fill="#111215">
+      THE CARAT THEORY
+    </text>
+
+    <!-- Refined Subtitle Descriptor -->
+    <text x="3" y="85" 
+          font-family="'Jost', 'Montserrat', 'Helvetica Neue', sans-serif" 
+          font-size="10.5" 
+          font-weight="400" 
+          letter-spacing="0.42em" 
+          fill="#8A6E3B">
+      FINE JEWELLERY &amp; CERTIFIED DIAMONDS
+    </text>
+
+    <!-- Subtle luxury architectural divider hairline -->
+    <line x1="3" y1="94" x2="420" y2="94" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.4" />
+  </g>
+</svg>

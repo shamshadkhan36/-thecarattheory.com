@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Carat Theory — Luxury Brand Identity & Logo System</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #FAF8F5;
+      --bg-white: #FFFFFF;
+      --bg-dark: #0B0C0E;
+      --bg-charcoal: #15171B;
+      --gold-primary: #D4AF37;
+      --gold-light: #F3E3B6;
+      --gold-dark: #8C6A28;
+      --gold-gradient: linear-gradient(135deg, #DFC07B 0%, #FFF3D1 30%, #D4AF37 55%, #B8934A 80%, #8C6A28 100%);
+      --text-dark: #111215;
+      --text-muted: #6B7280;
+      --border-subtle: rgba(184, 147, 74, 0.22);
+      --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --font-accent: 'Cormorant Garamond', serif;
+      --font-sans: 'Jost', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: var(--bg-dark);
+      color: #FFF;
+      padding: 2.5rem 2rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-top {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .brand-top img {
+      height: 48px;
+      width: auto;
+    }
+
+    .brand-meta h1 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      color: #FFF;
+    }
+
+    .brand-meta span {
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-lux {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid var(--gold-primary);
+    }
+
+    .btn-lux-primary {
+      background: var(--gold-gradient);
+      color: #0B0C0E;
+      border: none;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+
+    .btn-lux-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-lux-outline {
+      background: transparent;
+      color: #FFF;
+    }
+
+    .btn-lux-outline:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: #FFF;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+
+    /* Hero section */
+    .hero-banner {
+      background: linear-gradient(180deg, #0B0C0E 0%, #15171B 100%);
+      color: #FFF;
+      border-radius: 12px;
+      padding: 4rem 3rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border-bottom: 1px solid var(--gold-primary);
+      padding-bottom: 4px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #C5CBD3;
+      max-width: 720px;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    /* Grid Sections */
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      max-width: 650px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Cards */
+    .lux-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lux-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .lux-card.dark {
+      background: #0B0C0E;
+      color: #FFF;
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .card-preview {
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: #FAFAFA;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px dashed rgba(0,0,0,0.08);
+    }
+
+    .lux-card.dark .card-preview {
+      background: #14161B;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .card-meta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .card-meta p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .lux-card.dark .card-meta p {
+      color: #9CA3AF;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .download-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      background: #F3F4F6;
+      color: var(--text-dark);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .lux-card.dark .download-pill {
+      background: #23272F;
+      color: #FFF;
+    }
+
+    .download-pill:hover {
+      background: var(--gold-primary);
+      color: #000;
+    }
+
+    /* Mockup Visual Section */
+    .mockup-display {
+      background: #0B0C0E;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: #FFF;
+    }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .mockup-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mockup-img-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .mockup-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .mockup-img-wrap:hover img {
+      transform: scale(1.02);
+    }
+
+    .mockup-info h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      font-weight: 400;
+      color: var(--gold-light);
+    }
+
+    .mockup-info p {
+      color: #D1D5DB;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .mockup-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .mockup-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      color: #E5E7EB;
+    }
+
+    .mockup-features li span.icon {
+      color: var(--gold-primary);
+      font-size: 1.1rem;
+    }
+
+    /* Color Swatches */
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .swatch-card {
+      background: var(--bg-white);
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .swatch-color {
+      height: 120px;
+      width: 100%;
+      position: relative;
+    }
+
+    .swatch-body {
+      padding: 1.25rem;
+    }
+
+    .swatch-name {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .swatch-hex {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .swatch-role {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+
+    /* Copyright Shield Section */
+    .ip-shield {
+      background: #FFF;
+      border: 1px solid #E5E7EB;
+      border-left: 4px solid #10B981;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 3.5rem;
+    }
+
+    .ip-shield h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #065F46;
+    }
+
+    .ip-shield p {
+      font-size: 0.92rem;
+      color: #4B5563;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .ip-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.88rem;
+    }
+
+    .ip-table th, .ip-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .ip-table th {
+      background: #F9FAFB;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .tag-safe {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background: #D1FAE5;
+      color: #065F46;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    footer {
+      background: var(--bg-dark);
+      color: #9CA3AF;
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    footer .gold-txt {
+      color: var(--gold-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="brand-top">
+        <img src="assets/logo/logo-monogram.svg" alt="The Carat Theory Monogram">
+        <div class="brand-meta">
+          <h1>THE CARAT THEORY</h1>
+          <span>Brand Identity &amp; Master Logo System</span>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html" class="btn-lux btn-lux-primary">
+          <span>Explore Storefront</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+
+    <!-- HERO INTRODUCTION -->
+    <div class="hero-banner">
+      <div class="hero-badge">Fine Jewellery · Haute Joaillerie · Lab-Grown Diamonds</div>
+      <h2 class="hero-title">The Architecture of Light.<br>Where Science Meets Romance.</h2>
+      <p class="hero-subtitle">
+        Welcome to the master identity system for <strong>The Carat Theory</strong> (<code>thecarattheory.com</code>). Crafted with mathematical precision, timeless elegance, and 100% original intellectual property to protect your business from copyright claims while matching the luxury allure of world-class diamond ateliers.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="#logo-variations" class="btn-lux btn-lux-primary">View Logo Suite</a>
+        <a href="#mockup" class="btn-lux btn-lux-outline">Packaging &amp; Real Mockup</a>
+        <a href="#copyright-compliance" class="btn-lux btn-lux-outline">Copyright Protection Analysis</a>
+      </div>
+    </div>
+
+    <!-- MOCKUP DISPLAY -->
+    <div class="mockup-display" id="mockup">
+      <div class="mockup-grid">
+        <div class="mockup-img-wrap">
+          <img src="assets/brand-identity-mockup.jpg" alt="The Carat Theory Luxury Packaging Mockup">
+        </div>
+        <div class="mockup-info">
+          <div class="hero-badge">Physical Identity In Situ</div>
+          <h3>Haute Packaging &amp; Gemological Dossier</h3>
+          <p>
+            An immaculate visual representation of The Carat Theory in the physical world: rich matte black velvet presentation ring box with gold foil embossed insignia, revealing a 3.50 CT Ideal Cut diamond engagement ring in 18K yellow gold, paired with a debossed heavy-stock cream Certificate of Authenticity card.
+          </p>
+          <ul class="mockup-features">
+            <li><span class="icon">✦</span> <strong>Matte Black &amp; Cream Velvet:</strong> High-density tactile luxury box with gold foil stamping</li>
+            <li><span class="icon">✦</span> <strong>Certificate of Authenticity:</strong> Serialized diamond dossier card with laser inscription spec</li>
+            <li><span class="icon">✦</span> <strong>Geometric Brilliant Icon:</strong> Symmetrical facet lines representing mathematical fire</li>
+          </ul>
+          <a href="assets/brand-identity-mockup.jpg" download="the-carat-theory-mockup.jpg" class="btn-lux btn-lux-primary">
+            Download High-Res Mockup (JPG)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGO VARIATIONS SECTION -->
+    <div id="logo-variations">
+      <h2 class="section-title">Master Logo Lockups</h2>
+      <p class="section-desc">
+        A complete suite of vector SVG lockups optimized for responsive navigation headers, dark luxury themes, packaging boxes, and mobile touchpoints.
+      </p>
+
+      <div class="grid-2">
+        <!-- 1. Primary Horizontal Light -->
+        <div class="lux-card">
+          <div class="card-preview">
+            <img src="assets/logo/logo-primary.svg" alt="Primary Logo" style="max-width: 90%; height: auto;">
+          </div>
+          <div class="card-meta">
+            <h3>Primary Master Lockup (Light)</h3>
+            <p>
+              Ideal for clean editorial storefront headers, white paper invoices, digital lookbooks, and high-contrast light backgrounds.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="assets/logo/logo-primary.svg" download="the-carat-theory-primary.svg" class="download-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download SVG
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Primary Horizontal Dark -->
+        <div class="lux-card dark">
+          <div class="card-preview">
+            <img src="assets/logo/logo-gold-dark.svg" alt="Gold Dark Logo" style="max-width: 90%; height: auto;">
+          </div>
+          <div class="card-meta">
+            <h3>Radiant Champagne Gold (Dark)</h3>
+            <p>
+              Engineered with multi-tone champagne gold gradients and subtle specular highlights for obsidian black hero banners, footers, and velvet boutique boxes.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="assets/logo/logo-gold-dark.svg" download="the-carat-theory-gold-dark.svg" class="download-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download SVG
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Stacked Emblem -->
+        <div class="lux-card">
+          <div class="card-preview" style="min-height: 220px;">
+            <img src="assets/logo/logo-stacked.svg" alt="Stacked Emblem" style="max-height: 190px; width: auto;">
+          </div>
+          <div class="card-meta">
+            <h3>Stacked Vertical Crest</h3>
+            <p>
+              Centered architectural lockup designed for jewelry tags, guarantee cards, carrier bags, ribbons, and boutique entrance plaques.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="assets/logo/logo-stacked.svg" download="the-carat-theory-stacked.svg" class="download-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download SVG
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Monogram & Favicon -->
+        <div class="lux-card dark">
+          <div class="card-preview" style="min-height: 220px; gap: 2rem;">
+            <div style="text-align: center;">
+              <img src="assets/logo/logo-monogram.svg" alt="Monogram" style="height: 100px; width: auto; display: block; margin: 0 auto 0.5rem;">
+              <span style="font-size: 0.7rem; color: #9CA3AF; letter-spacing: 0.1em;">MONOGRAM ICON</span>
+            </div>
+            <div style="text-align: center;">
+              <img src="assets/logo/favicon.svg" alt="Favicon" style="height: 64px; width: 64px; display: block; margin: 0 auto 0.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+              <span style="font-size: 0.7rem; color: #9CA3AF; letter-spacing: 0.1em;">FAVICON (64×64)</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <h3>Faceted Monogram &amp; App Icon</h3>
+            <p>
+              Clean geometric diamond cut silhouette with calculated facet convergence. Works seamlessly down to 16×16px browser tabs and social media profile avatars.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="assets/logo/logo-monogram.svg" download="the-carat-theory-monogram.svg" class="download-pill">
+              Download Monogram
+            </a>
+            <a href="assets/logo/favicon.svg" download="favicon.svg" class="download-pill">
+              Download Favicon
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLOR SYSTEM -->
+    <div>
+      <h2 class="section-title">Luxury Color Palette</h2>
+      <p class="section-desc">
+        A bespoke palette balancing deep obsidian tones with iridescent champagne gold and soft natural parchment cream.
+      </p>
+
+      <div class="swatches-grid">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #0B0C0E;"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Obsidian Onyx</div>
+            <div class="swatch-hex">#0B0C0E</div>
+            <div class="swatch-role">Primary Noir / Luxury Base</div>
+          </div>
+        </div>
+
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: linear-gradient(135deg, #DFC07B, #D4AF37, #8C6A28);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Champagne Gold</div>
+            <div class="swatch-hex">#D4AF37 · Metallic</div>
+            <div class="swatch-role">Primary Accent &amp; Foil</div>
+          </div>
+        </div>
+
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #FAF8F5; border-bottom: 1px solid #E5E7EB;"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Silk Parchment</div>
+            <div class="swatch-hex">#FAF8F5</div>
+            <div class="swatch-role">Editorial Light Canvas</div>
+          </div>
+        </div>
+
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #E0E3E8;"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Platinum Luster</div>
+            <div class="swatch-hex">#E0E3E8</div>
+            <div class="swatch-role">Cool Metal Accent</div>
+          </div>
+        </div>
+
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #E5A89B;"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Rose Gold Blush</div>
+            <div class="swatch-hex">#E5A89B</div>
+            <div class="swatch-role">Warm Metal Accent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div style="margin-bottom: 3.5rem;">
+      <h2 class="section-title">Haute Typographic Pairing</h2>
+      <p class="section-desc">
+        Pairing time-honored neoclassical high-contrast serifs with airy geometric grotesque sans-serifs for effortless high-fashion authority.
+      </p>
+
+      <div class="lux-card" style="padding: 3rem;">
+        <div style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.5rem;">
+          <span style="font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: 0.5rem;">
+            Primary Display Serif — Playfair Display / Cormorant Garamond
+          </span>
+          <div style="font-family: var(--font-serif); font-size: 2.2rem; letter-spacing: 0.08em; font-weight: 400; margin-bottom: 0.5rem;">
+            A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+          </div>
+          <div style="font-family: var(--font-serif); font-size: 1.5rem; font-style: italic; color: #4B5563;">
+            "The Carat Theory — Mastercrafted diamonds engineered to outshine tradition."
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: 0.5rem;">
+            Functional Body &amp; UI — Jost &amp; Plus Jakarta Sans
+          </span>
+          <div style="font-family: var(--font-sans); font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; font-weight: 500;">
+            IGI &amp; GIA CERTIFIED · 100% CONFLICT-FREE · LIFETIME BUYBACK GUARANTEE
+          </div>
+          <p style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; max-width: 850px;">
+            Every diamond in our atelier is precision cut to optical tolerances measured in fractions of a millimeter. Our Type IIa lab-grown diamonds possess the exact crystalline carbon structure, hardness, and dispersion as earth-mined stones, certified by world-leading gemological institutes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COPYRIGHT PROTECTION ANALYSIS -->
+    <div class="ip-shield" id="copyright-compliance">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Intellectual Property &amp; Copyright Differentiation Strategy
+      </h3>
+      <p>
+        To ensure the client enjoys all commercial strengths, conversion patterns, and luxury positioning of reference websites like <em>Pure Promise Diamonds</em> without any risk of trademark or copyright infringement, we applied a strict legal separation framework:
+      </p>
+
+      <table class="ip-table">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Reference Website (Pure Promise)</th>
+            <th>The Carat Theory (Original Creation)</th>
+            <th>Legal Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Brand Name &amp; URL</strong></td>
+            <td>Pure Promise Diamonds (purepromisediamonds.com)</td>
+            <td><strong>The Carat Theory</strong> (thecarattheory.com)</td>
+            <td><span class="tag-safe">100% Distinct &amp; Trademarkable</span></td>
+          </tr>
+          <tr>
+            <td><strong>Brand Positioning</strong></td>
+            <td>"Pure Promise" (Promises repetition)</td>
+            <td><strong>"The Architecture of Light" / Scientific &amp; Aesthetic Carat Theory</strong></td>
+            <td><span class="tag-safe">Unique Brand Philosophy</span></td>
+          </tr>
+          <tr>
+            <td><strong>Visual Mark / Logo</strong></td>
+            <td>Generic line-art wordmark</td>
+            <td><strong>Bespoke 58-Facet Diamond Geometric Monogram</strong></td>
+            <td><span class="tag-safe">Original Vector Artwork</span></td>
+          </tr>
+          <tr>
+            <td><strong>Value Propositions</strong></td>
+            <td>"Pure Service", "Pure Flexibility"</td>
+            <td><strong>"Lifetime Buyback Assurance", "Certified Provenance", "Ethical Conscience"</strong></td>
+            <td><span class="tag-safe">Original Copywriting</span></td>
+          </tr>
+          <tr>
+            <td><strong>Website Layout &amp; Code</strong></td>
+            <td>Shopify Dawn/Horizon Theme modified</td>
+            <td><strong>Custom, Zero-Dependency Luxury Architecture</strong></td>
+            <td><span class="tag-safe">Original Source Code</span></td>
+          </tr>
+          <tr>
+            <td><strong>Product Names</strong></td>
+            <td>Kyla, Mabel, Viviana, Kennedi</td>
+            <td><strong>The Elysian, The Lumina, The Aurelia, The Riviera</strong></td>
+            <td><span class="tag-safe">Proprietary Collections</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="padding: 0;">
+      <p style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF; letter-spacing: 0.15em;">
+        THE CARAT THEORY
+      </p>
+      <p>Master Brand Identity &amp; Digital Storefront System</p>
+      <p class="gold-txt" style="margin-top: 1rem; font-size: 0.75rem; letter-spacing: 0.2em;">
+        &copy; 2026 THE CARAT THEORY. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

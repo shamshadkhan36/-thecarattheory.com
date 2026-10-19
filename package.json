@@ -1,0 +1,20 @@
+{
+  "name": "thecarattheory.com",
+  "version": "1.0.0",
+  "description": "The Carat Theory — Fine Jewellery & Certified Diamonds E-Commerce Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 3000 .",
+    "dev": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "diamonds",
+    "luxury",
+    "fine-jewellery",
+    "lab-grown-diamonds",
+    "engagement-rings",
+    "thecarattheory"
+  ],
+  "author": "The Carat Theory",
+  "license": "UNLICENSED"
+}
