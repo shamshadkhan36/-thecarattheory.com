@@ -4,11 +4,11 @@ export const BESTSELLER_RINGS = [
     name: "Kyla Three Stone Ring",
     priceINR: 103589,
     priceUSD: 1245,
-    image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3081_9_748f9614-e9e8-4ed7-8bce-f6919ca44e94.jpg",
+    image: "/assets/rings/kyla-yellow.jpg",
     imagesByColor: {
-      yellow: "https://purepromisediamonds.com/cdn/shop/files/HYLR3081_9_748f9614-e9e8-4ed7-8bce-f6919ca44e94.jpg",
-      white: "https://purepromisediamonds.com/cdn/shop/files/HYLR3081_5_4283f03a-b48d-47d8-b123-6e77009590f5.jpg",
-      rose: "https://purepromisediamonds.com/cdn/shop/files/HYLR3081_3_701b5855-09a1-4e98-8016-9d543bb2f8c5.jpg"
+      yellow: "/assets/rings/kyla-yellow.jpg",
+      white: "/assets/rings/kyla-white.jpg",
+      rose: "/assets/rings/kyla-rose.jpg"
     },
     metals: ["925 Silver", "9K", "14K", "18K"]
   },
@@ -17,11 +17,11 @@ export const BESTSELLER_RINGS = [
     name: "Mabel Three Stone Ring",
     priceINR: 37667,
     priceUSD: 450,
-    image: "https://purepromisediamonds.com/cdn/shop/files/R3_RD_1070001.png",
+    image: "/assets/rings/mabel-yellow.png",
     imagesByColor: {
-      yellow: "https://purepromisediamonds.com/cdn/shop/files/R3_RD_1070001.png",
-      white: "https://purepromisediamonds.com/cdn/shop/files/R3_RD_1070011.png",
-      rose: "https://purepromisediamonds.com/cdn/shop/files/R3_RD_1070005.png"
+      yellow: "/assets/rings/mabel-yellow.png",
+      white: "/assets/rings/mabel-white.png",
+      rose: "/assets/rings/mabel-rose.png"
     },
     metals: ["925 Silver", "9K", "14K", "18K"]
   },
@@ -30,11 +30,11 @@ export const BESTSELLER_RINGS = [
     name: "Kennedi Three Stone Ring",
     priceINR: 92832,
     priceUSD: 1115,
-    image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3007_1.jpg",
+    image: "/assets/rings/kennedi-yellow.jpg",
     imagesByColor: {
-      yellow: "https://purepromisediamonds.com/cdn/shop/files/HYLR3007_1.jpg",
-      white: "https://purepromisediamonds.com/cdn/shop/files/HYLR3007_7.jpg",
-      rose: "https://purepromisediamonds.com/cdn/shop/files/HYLR3007_5.jpg"
+      yellow: "/assets/rings/kennedi-yellow.jpg",
+      white: "/assets/rings/kennedi-white.jpg",
+      rose: "/assets/rings/kennedi-rose.jpg"
     },
     metals: ["925 Silver", "9K", "14K", "18K"]
   },
@@ -43,11 +43,11 @@ export const BESTSELLER_RINGS = [
     name: "Carmen Three Stone Ring",
     priceINR: 30029,
     priceUSD: 360,
-    image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3129_14.png",
+    image: "/assets/rings/carmen-yellow.png",
     imagesByColor: {
-      yellow: "https://purepromisediamonds.com/cdn/shop/files/HYLR3129_14.png",
-      white: "https://purepromisediamonds.com/cdn/shop/files/HYLR3129_7.png",
-      rose: "https://purepromisediamonds.com/cdn/shop/files/HYLR3129_8.png"
+      yellow: "/assets/rings/carmen-yellow.png",
+      white: "/assets/rings/carmen-white.png",
+      rose: "/assets/rings/carmen-yellow.png"
     },
     metals: ["925 Silver", "9K", "14K", "18K"]
   }
@@ -56,30 +56,30 @@ export const BESTSELLER_RINGS = [
 export const CATEGORIES_DATA = [
   {
     name: "RINGS",
-    image: "https://purepromisediamonds.com/cdn/shop/collections/20251006_1033_Elegant_Luxury_Ring_remix_01k6vycfx0ee19x9tf4tmj2sx5.png",
+    image: "/assets/category-rings.png",
     link: "#collection"
   },
   {
     name: "EARRINGS",
-    image: "https://purepromisediamonds.com/cdn/shop/collections/20251006_1041_Elegant_Gold_Earrings_remix_01k6vystytez7r7ceg0qhd6123.png",
+    image: "/assets/category-earrings.png",
     link: "#collection"
   },
   {
     name: "BRACELETS",
-    image: "https://purepromisediamonds.com/cdn/shop/collections/20251006_1044_Elegant_Diamond_Bracelet_remix_01k6vz0f4xev2tt89c9x6we12w.png",
+    image: "/assets/category-bracelets.png",
     link: "#collection"
   }
 ];
 
 export const SHAPES_DATA = [
-  { name: "PRINCESS", image: "https://purepromisediamonds.com/cdn/shop/collections/princess.png" },
-  { name: "CUSHION", image: "https://purepromisediamonds.com/cdn/shop/collections/cushion.png" },
-  { name: "EMERALD", image: "https://purepromisediamonds.com/cdn/shop/collections/emerald1.png" },
-  { name: "ROUND", image: "https://purepromisediamonds.com/cdn/shop/collections/round.png" },
-  { name: "OVAL", image: "https://purepromisediamonds.com/cdn/shop/collections/oval.png" },
-  { name: "PEAR", image: "https://purepromisediamonds.com/cdn/shop/collections/pear.png" },
-  { name: "MARQUISE", image: "https://purepromisediamonds.com/cdn/shop/collections/marquise.png" },
-  { name: "HEART", image: "https://purepromisediamonds.com/cdn/shop/collections/heart.png" }
+  { name: "PRINCESS", image: "/assets/shapes/princess.png" },
+  { name: "CUSHION", image: "/assets/shapes/cushion.png" },
+  { name: "EMERALD", image: "/assets/shapes/emerald.png" },
+  { name: "ROUND", image: "/assets/shapes/round.png" },
+  { name: "OVAL", image: "/assets/shapes/oval.png" },
+  { name: "PEAR", image: "/assets/shapes/pear.png" },
+  { name: "MARQUISE", image: "/assets/shapes/marquise.png" },
+  { name: "HEART", image: "/assets/shapes/heart.png" }
 ];
 
 export const PRODUCTS_DATA = [

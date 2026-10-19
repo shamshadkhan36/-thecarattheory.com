@@ -3,7 +3,7 @@ import { BESTSELLER_RINGS } from '../data/products';
 import { useCurrency } from '../context/CurrencyContext';
 import { useCart } from '../context/CartContext';
 
-export const Bestsellers = () => {
+export const Bestsellers = ({ onQuickView }) => {
   const { currency, formatMoney } = useCurrency();
   const { addToCart } = useCart();
 
@@ -53,7 +53,12 @@ export const Bestsellers = () => {
             return (
               <div key={ring.id} className="bestseller-card-ref">
                 {/* 3D Ring Render on Pure White Canvas */}
-                <div className="bestseller-img-wrap-ref">
+                <div
+                  className="bestseller-img-wrap-ref"
+                  onClick={() => onQuickView && onQuickView(ring)}
+                  style={{ cursor: 'pointer' }}
+                  title="Click to view details"
+                >
                   <img src={currentImg} alt={ring.name} />
                 </div>
 
@@ -92,30 +97,6 @@ export const Bestsellers = () => {
                       title="Rose Gold"
                     />
                   </div>
-
-                  <button
-                    onClick={() =>
-                      addToCart({
-                        id: `${ring.id}-${activeMetal}-${activeColor}`,
-                        name: ring.name,
-                        price: ring.priceUSD,
-                        image: currentImg,
-                        metal: `${activeMetal} ${activeColor.toUpperCase()}`,
-                        carat: '1.50 Carat',
-                        certification: 'IGI Certified',
-                        qty: 1
-                      })
-                    }
-                    className="btn btn-outline"
-                    style={{
-                      width: '100%',
-                      marginTop: '0.75rem',
-                      padding: '0.45rem',
-                      fontSize: '0.75rem'
-                    }}
-                  >
-                    Add to Bag
-                  </button>
                 </div>
               </div>
             );

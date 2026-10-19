@@ -50,18 +50,17 @@ export function App() {
             {/* 2. Solid Wine Header (Matching Image 1 & 2) */}
             <Header
               onOpenSearch={() => setIsSearchOpen(true)}
-              onOpenLogoGuide={() => setIsLogoGuideOpen(true)}
               onOpenAppointment={() => handleOpenAppointment()}
             />
 
             {/* 3. Hero Section (Matching Image 1) */}
-            <HeroSlider onOpenAppointment={handleOpenAppointment} />
+            <HeroSlider />
 
             {/* 4. SHOP BY CATEGORY (Matching Image 2: Rounded Velvet Cards) */}
             <ShopByCategory />
 
             {/* 5. BESTSELLERS (Matching Image 3: 4 Rings with Metal Purity & Color Dots) */}
-            <Bestsellers />
+            <Bestsellers onQuickView={setQuickViewProduct} />
 
             {/* 6. SHOP BY SHAPE (Matching Image 4: 8 Diamond Cuts) */}
             <ShopByShape />

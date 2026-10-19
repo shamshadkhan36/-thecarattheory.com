@@ -5,57 +5,72 @@ const PROMISES = [
     title: 'LIFETIME BUYBACK',
     subtitle: 'A Policy, made for you.',
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-        <line x1="12" y1="22.08" x2="12" y2="12" />
+      <svg width="44" height="44" viewBox="0 0 20 20" fill="#55142A">
+        <path
+          d="M9.69502 0.6786C9.91338 0.601796 10.1516 0.603123 10.3691 0.682353L18.2151 3.54058C18.61 3.68445 18.8728 4.05988 18.8728 4.48018V14.4287C18.8728 14.8074 18.6588 15.1537 18.32 15.3231L10.4731 19.2465C10.196 19.385 9.87022 19.3873 9.59117 19.2526L1.45405 15.3244C1.10843 15.1576 0.888794 14.8076 0.888794 14.4239V4.48434C0.888794 4.05997 1.15665 3.68181 1.55699 3.541L9.69502 0.6786ZM6.07999 3.01017L2.5346 4.25719L10.149 7.63545L13.5692 6.118L6.07999 3.01017ZM6.78606 2.76183L14.1997 5.83828L17.5367 4.35774L10.0268 1.62195L6.78606 2.76183ZM1.88879 14.4239L1.88879 5.06467L9.64898 8.50762V18.1701L1.88879 14.4239ZM17.8728 14.4287L10.649 18.0405V8.50762L17.8728 5.30263V14.4287Z"
+          fillRule="evenodd"
+        />
       </svg>
     )
   },
   {
     title: 'CERTIFIED JEWELRY',
-    subtitle: 'Pure. Promise. Certified.',
+    subtitle: 'Pure. Promise. Certified',
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
-        <polygon points="6 3 18 3 22 9 12 22 2 9" />
-        <line x1="2" y1="9" x2="22" y2="9" />
-        <polyline points="10 3 12 9 14 3" />
-      </svg>
+      <div
+        style={{
+          width: 44,
+          height: 44,
+          backgroundColor: '#55142A',
+          WebkitMask: "url('/assets/icons/promise-certified.png') no-repeat center / contain",
+          mask: "url('/assets/icons/promise-certified.png') no-repeat center / contain"
+        }}
+      />
     )
   },
   {
     title: 'FREE SHIPPING',
     subtitle: 'Pure Service. Promised Delivery.',
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
-        <rect x="1" y="3" width="15" height="13" />
-        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-        <circle cx="5.5" cy="18.5" r="2.5" />
-        <circle cx="18.5" cy="18.5" r="2.5" />
-      </svg>
+      <div
+        style={{
+          width: 44,
+          height: 44,
+          backgroundColor: '#55142A',
+          WebkitMask: "url('/assets/icons/promise-shipping.png') no-repeat center / contain",
+          mask: "url('/assets/icons/promise-shipping.png') no-repeat center / contain"
+        }}
+      />
     )
   },
   {
     title: 'EXCHANGE & UPGRADE',
     subtitle: 'Pure Flexibility. With a promise to evolve.',
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
-        <polyline points="17 11 21 7 17 3" />
-        <line x1="21" y1="7" x2="9" y2="7" />
-        <polyline points="7 13 3 17 7 21" />
-        <line x1="3" y1="17" x2="15" y2="17" />
-      </svg>
+      <div
+        style={{
+          width: 44,
+          height: 44,
+          backgroundColor: '#55142A',
+          WebkitMask: "url('/assets/icons/promise-exchange.png') no-repeat center / contain",
+          mask: "url('/assets/icons/promise-exchange.png') no-repeat center / contain"
+        }}
+      />
     )
   },
   {
     title: 'SUSTAINABLE & ECO-FRIENDLY',
     subtitle: 'Pure materials, with a promise of responsibility.',
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
+      <div
+        style={{
+          width: 44,
+          height: 44,
+          backgroundColor: '#55142A',
+          WebkitMask: "url('/assets/icons/promise-sustainable.png') no-repeat center / contain",
+          mask: "url('/assets/icons/promise-sustainable.png') no-repeat center / contain"
+        }}
+      />
     )
   }
 ];

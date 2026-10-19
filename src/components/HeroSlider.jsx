@@ -1,36 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export const HeroSlider = ({ onOpenAppointment }) => {
+export const HeroSlider = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: '/assets/hero-banner-exact.png',
+      alt: 'Pure Promise Diamonds Fine Jewellery'
+    }
+  ];
+
   return (
-    <section className="hero-slider-section">
-      <img
-        src="/assets/hero-banner.jpg"
-        alt="The Carat Theory Fine Jewellery"
-        className="hero-slide-bg"
-      />
-      <div className="hero-slide-overlay"></div>
-
-      <div className="container" style={{ position: 'relative', zIndex: 5 }}>
-        <div className="hero-slide-content">
-          <h1 className="hero-slide-title">
-            Lifetime Promises
-          </h1>
-          <span className="hero-slide-accent">
-            Including Our "Lifetime Buyback" Promise.
-          </span>
-          <p className="hero-slide-desc">
-            Mastercrafted certified diamonds engineered for pure brilliance, guaranteed value retention, and conflict-free peace of mind.
-          </p>
-          <div className="hero-slide-actions">
-            <a href="#promises" className="btn btn-outline" style={{ color: '#FFF', borderColor: '#FFF' }}>
-              Know More
-            </a>
-            <a href="#collection" className="btn btn-primary">
-              Shop Now
-            </a>
-          </div>
-        </div>
+    <section className="hero-slider-section-ref">
+      <div className="hero-slide-item-ref">
+        <img
+          src={slides[currentSlide].image}
+          alt={slides[currentSlide].alt}
+          className="hero-slide-img-ref"
+        />
       </div>
+
+      {/* Navigation Arrows on Left and Right (thin stroke matching screenshot 1) */}
+      <button
+        className="hero-arrow-ref hero-arrow-left"
+        onClick={() => setCurrentSlide((prev) => (prev > 0 ? prev - 1 : slides.length - 1))}
+        aria-label="Previous Slide"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+      </button>
+
+      <button
+        className="hero-arrow-ref hero-arrow-right"
+        onClick={() => setCurrentSlide((prev) => (prev < slides.length - 1 ? prev + 1 : 0))}
+        aria-label="Next Slide"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </button>
     </section>
   );
 };
