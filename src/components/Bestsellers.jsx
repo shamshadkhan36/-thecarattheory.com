@@ -3,7 +3,7 @@ import { BESTSELLER_RINGS } from '../data/products';
 import { useCurrency } from '../context/CurrencyContext';
 import { useCart } from '../context/CartContext';
 
-export const Bestsellers = ({ onQuickView }) => {
+export const Bestsellers = ({ onQuickView, onSelectProduct }) => {
   const { currency, formatMoney } = useCurrency();
   const { addToCart } = useCart();
 
@@ -37,6 +37,14 @@ export const Bestsellers = ({ onQuickView }) => {
     return formatMoney(ring.priceUSD);
   };
 
+  const handleProductClick = (ring) => {
+    if (onSelectProduct) {
+      onSelectProduct(ring);
+    } else if (onQuickView) {
+      onQuickView(ring);
+    }
+  };
+
   return (
     <section className="section-padding bestsellers-section-ref" id="collection">
       <div className="container">
@@ -55,7 +63,7 @@ export const Bestsellers = ({ onQuickView }) => {
                 {/* 3D Ring Render on Pure White Canvas */}
                 <div
                   className="bestseller-img-wrap-ref"
-                  onClick={() => onQuickView && onQuickView(ring)}
+                  onClick={() => handleProductClick(ring)}
                   style={{ cursor: 'pointer' }}
                   title="Click to view details"
                 >
@@ -63,7 +71,13 @@ export const Bestsellers = ({ onQuickView }) => {
                 </div>
 
                 <div className="bestseller-details-ref">
-                  <h4 className="bestseller-title-ref">{ring.name}</h4>
+                  <h4
+                    className="bestseller-title-ref"
+                    onClick={() => handleProductClick(ring)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {ring.name}
+                  </h4>
                   <div className="bestseller-price-ref">{formatPrice(ring)}</div>
 
                   {/* Metal Purity Selector: 925 Silver, 9K, 14K, 18K */}

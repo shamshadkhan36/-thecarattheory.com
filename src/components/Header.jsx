@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { MegaMenu } from './MegaMenu';
 
-export const Header = ({ onOpenSearch, onOpenAppointment }) => {
+export const Header = ({ onOpenSearch, onOpenAppointment, onNavigateHome }) => {
   const { cartCount, setIsCartOpen } = useCart();
   const { wishlistCount } = useWishlist();
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -19,11 +19,19 @@ export const Header = ({ onOpenSearch, onOpenAppointment }) => {
       onMouseLeave={() => setActiveMegaMenu(null)}
     >
       <div className="container header-container-ref">
-        {/* Brand Logo matching circled reference */}
-        <a href="#" className="brand-logo-ref" title="Pure Promise Diamonds">
+        {/* The Carat Theory Master Logo */}
+        <a
+          href="#"
+          className="brand-logo-ref"
+          title="The Carat Theory Diamonds"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onNavigateHome) onNavigateHome();
+          }}
+        >
           <img
-            src="/assets/logo/pure-promise-logo.png"
-            alt="Pure Promise Diamonds"
+            src="/assets/logo/the-carat-theory-white.svg"
+            alt="The Carat Theory Diamonds"
             className="brand-logo-img-ref"
           />
         </a>

@@ -23,10 +23,18 @@ import { AppointmentModal } from './components/AppointmentModal';
 import { SizingModal } from './components/SizingModal';
 import { SearchModal } from './components/SearchModal';
 import { LogoGuideModal } from './components/LogoGuideModal';
+import { ProductPage } from './components/ProductPage';
 
-import { PRODUCTS_DATA } from './data/products';
+import { PRODUCTS_DATA, PRIMARY_PRODUCT } from './data/products';
 
 export function App() {
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash.includes('home')) {
+      return 'home';
+    }
+    return 'product'; // Default to product page as requested
+  });
+  const [selectedProduct, setSelectedProduct] = useState(PRIMARY_PRODUCT);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
@@ -45,37 +53,63 @@ export function App() {
         <WishlistProvider>
           <div className="site-wrapper">
             {/* 1. Announcement Bar (Soft Peach #FFF3E3 with Wine #55142A text) */}
-            <AnnouncementBar />
+            <AnnouncementBar
+              currentView={currentView}
+              onToggleView={() => setCurrentView((v) => (v === 'product' ? 'home' : 'product'))}
+            />
 
-            {/* 2. Solid Wine Header (Matching Image 1 & 2) */}
+            {/* 2. Solid Wine Header (The Carat Theory Logo) */}
             <Header
               onOpenSearch={() => setIsSearchOpen(true)}
               onOpenAppointment={() => handleOpenAppointment()}
+              onNavigateHome={() => setCurrentView('home')}
             />
 
-            {/* 3. Hero Section (Matching Image 1) */}
-            <HeroSlider />
+            {currentView === 'product' ? (
+              /* Product Detail Page (PDP - Matching Reference Screenshots) */
+              <ProductPage
+                product={selectedProduct}
+                onOpenSizing={() => setIsSizingOpen(true)}
+                onOpenAppointment={() => handleOpenAppointment('Full-Value Buyback Policy Consultation')}
+                onSelectProduct={(p) => {
+                  setSelectedProduct(PRIMARY_PRODUCT);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
+            ) : (
+              <>
+                {/* 3. Hero Section (Matching Image 1) */}
+                <HeroSlider />
 
-            {/* 4. SHOP BY CATEGORY (Matching Image 2: Rounded Velvet Cards) */}
-            <ShopByCategory />
+                {/* 4. SHOP BY CATEGORY (Matching Image 2: Rounded Velvet Cards) */}
+                <ShopByCategory />
 
-            {/* 5. BESTSELLERS (Matching Image 3: 4 Rings with Metal Purity & Color Dots) */}
-            <Bestsellers onQuickView={setQuickViewProduct} />
+                {/* 5. BESTSELLERS (Matching Image 3: 4 Rings with Metal Purity & Color Dots) */}
+                <Bestsellers
+                  onQuickView={setQuickViewProduct}
+                  onSelectProduct={(ring) => {
+                    setSelectedProduct(PRIMARY_PRODUCT);
+                    setCurrentView('product');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                />
 
-            {/* 6. SHOP BY SHAPE (Matching Image 4: 8 Diamond Cuts) */}
-            <ShopByShape />
+                {/* 6. SHOP BY SHAPE (Matching Image 4: 8 Diamond Cuts) */}
+                <ShopByShape />
 
-            {/* 7. FEATURED COLLECTIONS (Matching Image 4 Bottom) */}
-            <FeaturedCollections />
+                {/* 7. FEATURED COLLECTIONS (Matching Image 4 Bottom) */}
+                <FeaturedCollections />
 
-            {/* 8. OUR STORY (Matching Image 5 Top) */}
-            <OurStory onOpenLogoGuide={() => setIsLogoGuideOpen(true)} />
+                {/* 8. OUR STORY (Matching Image 5 Top) */}
+                <OurStory onOpenLogoGuide={() => setIsLogoGuideOpen(true)} />
 
-            {/* 9. OUR PROMISE (Matching Image 5 Middle: Soft Peach Banner with 5 Columns) */}
-            <OurPromise />
+                {/* 9. OUR PROMISE (Matching Image 5 Middle: Soft Peach Banner with 5 Columns) */}
+                <OurPromise />
 
-            {/* 10. Frequently asked questions (Matching Image 5 Bottom) */}
-            <FAQSection />
+                {/* 10. Frequently asked questions (Matching Image 5 Bottom) */}
+                <FAQSection />
+              </>
+            )}
 
             {/* 11. Footer (Wine Red #55142A with Peach #FFF3E3 Links) */}
             <Footer

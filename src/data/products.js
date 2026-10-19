@@ -1,3 +1,98 @@
+export const PRIMARY_PRODUCT = {
+  id: "ring-lennon",
+  name: "Lennon Three Stone Ring",
+  sku: "HYLR015",
+  rating: 5.0,
+  reviewsCount: 42,
+  priceINR: 79420,
+  priceUSD: 955,
+  pricesByPurity: {
+    "925 Silver": 18900,
+    "9K": 48200,
+    "14K": 64800,
+    "18K": 79420
+  },
+  metals: ["925 Silver", "9K", "14K", "18K"],
+  colors: [
+    { id: "yellow", name: "Yellow Gold", hex: "#F2C94C", imageIndex: 0 },
+    { id: "white", name: "White Gold", hex: "#C4C4C4", imageIndex: 6 },
+    { id: "rose", name: "Rose Gold", hex: "#E08E88", imageIndex: 8 }
+  ],
+  images: [
+    { src: "/assets/products/lennon/hylr015-1.png", alt: "Lennon Three Stone Ring Front View", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-11.png", alt: "Lennon Three Stone Ring Angled View", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-5.png", alt: "Lennon Three Stone Ring Side Profile", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-7.png", alt: "Lennon Ring 360 Spin Video", isVideo: true },
+    { src: "/assets/products/lennon/hylr015-3.png", alt: "Lennon Ring Detail Angle", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-10.png", alt: "Lennon Diamond Shank Pavé", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-4.png", alt: "Lennon White Gold Front", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-9.png", alt: "Lennon White Gold 360 Spin", isVideo: true },
+    { src: "/assets/products/lennon/hylr015-2.png", alt: "Lennon Rose Gold Front", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-6.png", alt: "Lennon Rose Gold Side", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-8.png", alt: "Lennon Rose Gold Profile", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-12.png", alt: "Lennon Top Down Symmetry", isVideo: false },
+    { src: "/assets/products/lennon/hylr015-14.jpg", alt: "Lennon On-Model Hand Shot", isVideo: false }
+  ],
+  description: "Lennon Three Stone Ring brings a touch of luxury to your everyday attire, infusing it with creative elegance. Crafted with gold and diamonds, it's an ideal accessory for any occasion. Your order includes quality packaging and diamond certificate.",
+  details: [
+    { label: "Metal Purity", value: "18K Gold (Hallmarked) / 14K / 9K / 925 Sterling Silver" },
+    { label: "Center Diamond Carat", value: "1.20 ct Type IIa Lab-Grown Diamond" },
+    { label: "Side Diamonds", value: "0.90 ct TW Brilliant Round Diamonds" },
+    { label: "Total Carat Weight", value: "2.10 ct TW" },
+    { label: "Diamond Color & Clarity", value: "DEF Color · VVS-VS Clarity" },
+    { label: "Diamond Cut", value: "Excellent / Ideal Cut (Hearts & Arrows)" },
+    { label: "Certificate", value: "IGI / GIA Authenticated Laser Inscription" },
+    { label: "Approx. Gold Weight", value: "4.95 grams (18K Solid Gold)" }
+  ],
+  priceBreakup: [
+    { item: "Gold Value (18K Hallmarked)", amount: "Rs. 24,650" },
+    { item: "Diamond Value (DEF / VVS Certified)", amount: "Rs. 46,200" },
+    { item: "Making & Setting Charges", amount: "Rs. 6,250" },
+    { item: "Applicable GST (3%)", amount: "Rs. 2,320" },
+    { item: "Total Selling Price", amount: "Rs. 79,420", highlight: true }
+  ],
+  shippingInfo: "Complimentary insured express delivery in 3-5 business days across India. Ships via insured armored transport with discrete tamper-evident luxury presentation packaging. 15-Day 100% money back guarantee & Lifetime Full-Value Buyback policy."
+};
+
+export const RELATED_PRODUCTS = [
+  {
+    id: "related-kyla",
+    name: "Kyla Three Stone Ring",
+    priceINR: 103589,
+    priceUSD: 1245,
+    image: "/assets/rings/kyla-yellow.jpg",
+    metals: ["925 Silver", "9K", "14K", "18K"],
+    colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
+  },
+  {
+    id: "related-viviana",
+    name: "Viviana Solitaire Ring",
+    priceINR: 31416,
+    priceUSD: 378,
+    image: "/assets/products/viviana-solitaire.png",
+    metals: ["925 Silver", "9K", "14K", "18K"],
+    colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
+  },
+  {
+    id: "related-evie",
+    name: "Evie Tennis Bracelet",
+    priceINR: 55678,
+    priceUSD: 670,
+    image: "/assets/products/evie-bracelet.jpg",
+    metals: ["925silver", "9K", "14K", "18K"],
+    colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
+  },
+  {
+    id: "related-giselle",
+    name: "Giselle Tennis Necklace",
+    priceINR: 22747,
+    priceUSD: 275,
+    image: "/assets/products/giselle-necklace.jpg",
+    metals: ["925 silver", "9K", "14K", "18K"],
+    colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
+  }
+];
+
 export const BESTSELLER_RINGS = [
   {
     id: "ring-kyla",
