@@ -1,111 +1,149 @@
 # THE CARAT THEORY (thecarattheory.com)
-> **The Architecture of Light · Fine Jewellery & Certified Diamonds**
+> **Fine Jewellery & Certified Diamonds — Full-Stack React + Node.js E-Commerce Platform**
 
-[![License](https://img.shields.io/badge/Brand-The_Carat_Theory-D4AF37.svg)](https://thecarattheory.com)
-[![Status](https://img.shields.io/badge/Storefront-Production_Ready-10B981.svg)](#)
-[![Brand Identity](https://img.shields.io/badge/Logo_System-Vector_SVG_%2B_Physical_Mockup-blue.svg)](logo-guide.html)
-
----
-
-## 💎 Brand Identity & Overview
-**The Carat Theory** (`thecarattheory.com`) is an ultra-luxury fine jewellery e-commerce storefront specializing in certified lab-grown diamonds, bespoke engagement rings, tennis bracelets, earrings, and pendants.
-
-Inspired by industry leaders like *Pure Promise Diamonds*, *Tiffany & Co.*, and *Cartier*, The Carat Theory takes the best commercial mechanics (lifetime buyback, certified stones, free armored shipping, custom ring studio) while establishing a **100% original, copyright-safe, legally trademarkable brand identity**.
+[![Stack](https://img.shields.io/badge/Stack-React_18_%2B_Node.js_%2B_Express-61DAFB.svg)](#)
+[![Theme](https://img.shields.io/badge/Theme-Burgundy_%2355142A_%7C_Peach_%23FFF3E3-55142A.svg)](#)
+[![Brand Identity](https://img.shields.io/badge/Logo_Suite-Vector_SVG_%2B_Packaging_Mockup-D4AF37.svg)](public/assets/logo/logo-primary.svg)
+[![Repo](https://img.shields.io/badge/GitHub-shamshadkhan36%2F--thecarattheory.com-black.svg)](https://github.com/shamshadkhan36/-thecarattheory.com.git)
 
 ---
 
-## 🎨 Master Logo Suite & Brand Assets
-
-All logo files are precision-crafted vector SVGs and high-resolution renders ready for web, packaging, and print:
-
-| Asset | File Path | Description |
-|---|---|---|
-| **Primary Master Logo** | [`assets/logo/logo-primary.svg`](assets/logo/logo-primary.svg) | Horizontal master lockup with diamond facet mark & serif typography |
-| **Gold & Dark Edition** | [`assets/logo/logo-gold-dark.svg`](assets/logo/logo-gold-dark.svg) | Radiant champagne gold gradient lockup for dark backgrounds |
-| **Stacked Luxury Crest** | [`assets/logo/logo-stacked.svg`](assets/logo/logo-stacked.svg) | Centered architectural lockup for jewelry certificates and gift boxes |
-| **Faceted Monogram** | [`assets/logo/logo-monogram.svg`](assets/logo/logo-monogram.svg) | Standalone 58-facet diamond emblem with mathematical convergence |
-| **Browser Favicon** | [`assets/logo/favicon.svg`](assets/logo/favicon.svg) | Crisp 64×64 icon for browser tabs and mobile bookmarks |
-| **Packaging Mockup** | [`assets/brand-identity-mockup.jpg`](assets/brand-identity-mockup.jpg) | High-end physical packaging: velvet box, 18k diamond ring, and certificate |
-| **Hero Banner** | [`assets/hero-banner.jpg`](assets/hero-banner.jpg) | Editorial luxury photo with emerald-cut ring & tennis bracelet on black marble |
-| **Interactive Brand Portal** | [`logo-guide.html`](logo-guide.html) | Interactive brand guide with downloads, color codes, and IP protection matrix |
+## 💎 Overview
+**The Carat Theory** (`thecarattheory.com`) is a full-stack **React 18 + Node.js (Express)** e-commerce application designed to match the **exact section sequence, layout structure, typography, and color palette** of the reference website [Pure Promise Diamonds](https://purepromisediamonds.com/), while establishing **100% original branding, copyright safety, and bespoke diamond gemology**.
 
 ---
 
-## 🛡️ Intellectual Property & Copyright Protection
+## 🎨 Color Palette & Typography (Matching Reference Site)
 
-To ensure the client never faces copyright or trademark infringement claims:
+| Color Token | Hex Code | RGB | Role / Usage |
+|---|---|---|---|
+| **Wine / Royal Burgundy** | `#55142A` | `rgb(85, 20, 42)` | Primary CTA buttons, section headings, price tags, footer |
+| **Warm Peach Cream** | `#FFF3E3` | `rgb(255, 243, 227)` | Announcement bar background, shape detail cards, button text |
+| **Warm Ivory** | `#FAF9F1` | `rgb(250, 249, 241)` | Secondary section background |
+| **Clean White** | `#FFFFFF` | `rgb(255, 255, 255)` | Main storefront canvas & product cards |
+| **Dark Noir** | `#1A1A1A` | `rgb(26, 26, 26)` | High-contrast body typography |
+| **Gold Sparkle** | `#FDC656` | `rgb(253, 198, 86)` | Diamond spark accents & badge highlights |
 
-1. **Brand Trademark**: "The Carat Theory" is uniquely conceived around the physics of diamond light refraction and gemological precision.
-2. **Original Visual Assets**: All logo marks, monogram icons, and color palettes were constructed from scratch with bespoke geometry.
-3. **Original Copywriting**: The 5 Carat Theory Promises (*Lifetime Buyback Assurance*, *Certified Provenance*, *Insured Worldwide Delivery*, *Master Craftsmanship*, *Conscious Ethics*) are entirely original while matching the customer trust of Pure Promise.
-4. **Proprietary Code**: Zero theme lock-in or scraped templates; built on a clean, responsive, zero-dependency architecture.
-
----
-
-## 🚀 Key Storefront Features
-
-- **Interactive Shop by Diamond Cut**:
-  Explore the 9 master shapes (*Round, Oval, Emerald, Cushion, Princess, Pear, Marquise, Radiant, Heart*) with live optical fire ratings and facet counts.
-- **Dynamic Product Cards with Metal & Carat Switchers**:
-  Seamlessly toggle between 18K Yellow Gold, 18K White Gold, 18K Rose Gold, and Platinum 950 with live image swapping and price recalculation.
-- **Custom Bespoke Atelier ("Design With Us")**:
-  3-step interactive ring builder (Setting, Diamond Cut/Carat, Precious Metal) with instant dynamic pricing quotes and VIP reservation.
-- **Multi-Currency Engine**:
-  Live currency switching across **USD ($)**, **EUR (€)**, **GBP (£)**, **INR (₹)**, and **AED (AED)**.
-- **Interactive Slide-Out Cart Bag**:
-  Real-time line item updates, quantity controls, and a dynamic **Free Armored Worldwide Shipping** progress bar.
-- **Wishlist Drawer**:
-  Save favorite jewels with `localStorage` persistence and 1-click "Move to Bag".
-- **Quick View Modal**:
-  Detailed specifications, optical grades (D-F Color, VVS1 Clarity), certificate preview, and sizing guides.
-- **Gemological Education & 4Cs Visualizer**:
-  Comprehensive breakdown of Cut, Color, Clarity, and Carat weight.
-- **Private Concierge Consultation Booking**:
-  Interactive reservation system for virtual Zoom HD macro sessions and showroom viewing.
+### Reference Typographic Scale
+* **Heading Family:** `"Roboto Condensed", sans-serif` — Tall, bold uppercase titles (`SHOP BY CATEGORY`, `BESTSELLERS`, `SHOP BY SHAPE`).
+* **Accent Editorial Family:** `"Instrument Serif", serif` — Italic luxury editorial accents (*"Loved. Worn. Remembered."*, *"A Policy, made for you."*).
+* **Body Family:** `"Jost", sans-serif` — Modern geometric, high-legibility body copy.
 
 ---
 
-## 💻 How to Run Locally
+## 📐 Storefront Structure (Exact Reference Section Order)
 
-You can preview the website immediately with no build steps required:
+1. **Announcement Bar** (Color Scheme 5: `#FFF3E3` Peach with `#55142A` Wine text):
+   * *"Free shipping On All diamond jewellery • Lifetime Buyback Guarantee • Shop Now"*
+2. **Main Header**:
+   * Brand Logo, Categories (`Rings`, `Earrings`, `Bracelets`, `Pendants`, `Necklaces`, `CUSTOMISE`, `CONTACT`), Multi-Currency Selector, Search, Wishlist, Cart Drawer.
+3. **Hero Slideshow** (`slideshow_GUbP3k`):
+   * *"Lifetime Promises — Including Our 'Lifetime Buyback' Promise"* with **Know More** & **Shop Now** buttons.
+4. **SHOP BY CATEGORY** (`collection_list_VmD4xN`):
+   * Portrait cards: `RINGS`, `EARRINGS`, `BRACELETS`, `PENDANTS`, `NOSEPINS`, `NECKLACE`.
+5. **BESTSELLERS** (`product_list_EDUBdR`):
+   * Subtitle: *"Our Most Coveted Designs, Loved. Worn. Remembered."*
+   * Interactive tabs (`All`, `Three Stone`, `Solitaire`, `Halo`, `Tennis Bracelets`, `Earrings`).
+   * Dynamic price calculations, precious metal swatches, and carat selectors.
+6. **SHOP BY SHAPE** (`collection_list_ehxcPm`):
+   * Interactive cut selector: `PRINCESS`, `CUSHION`, `EMERALD`, `ROUND`, `OVAL`, `PEAR`, `MARQUISE`, `HEART` with facet counts and fire ratings.
+7. **FEATURED COLLECTIONS** (`collection_list_UNbHPj`):
+   * `SOLITAIRE`, `DESIGNER`, `EVERYDAY`.
+8. **DESIGN WITH US** (`media_with_content_LfPdEJ`):
+   * Split media and interactive Bespoke Ring Studio with live quotes and **Start Now** button.
+9. **BOOK AN APPOINTMENT** (`media_with_content_TxjMU4`):
+   * Split media booking banner with **Book Now** action.
+10. **OUR STORY** (`section_apYzwg`):
+    * Split media brand heritage with **Know More** button.
+11. **OUR PROMISE (5 Pillars)** (`section_4Arnjh`):
+    * *Lifetime Buyback*, *Certified Jewelry*, *Free Shipping*, *Exchange & Upgrade*, *Sustainable & Eco-friendly*.
+12. **Frequently Asked Questions** (`section_aWDLqq`):
+    * Clean accordion with core diamond questions.
+13. **Footer**:
+    * Luxury Wine Red `#55142A` background, VIP newsletter subscription, navigation columns, care guides, policy links, and payment method badges.
 
-### Option 1: Direct File Preview
-Simply double-click [`index.html`](index.html) or [`logo-guide.html`](logo-guide.html) to open directly in any modern browser (Chrome, Edge, Safari, Firefox).
+---
 
-### Option 2: Local HTTP Server (Node.js)
+## ⚡ Full-Stack Node.js REST API
+
+The Node.js Express server (`server/server.js`) exposes the following endpoints:
+
+* `GET /api/health` — Server status & domain info
+* `GET /api/products` — Product catalog with query parameters (`?category=...`, `?shape=...`, `?q=...`)
+* `GET /api/products/:id` — Single product details
+* `GET /api/shapes` — 8 master diamond cuts with optical parameters
+* `POST /api/atelier/quote` — Real-time custom ring configuration quote calculator
+* `POST /api/appointments` — VIP concierge session reservations
+* `POST /api/newsletter` — VIP member signups with welcome privilege codes
+
+---
+
+## 🚀 Quick Start Guide
+
+### 1. Install Dependencies
 ```bash
-npx serve -l 3000 .
+npm install
 ```
-Then navigate to `http://localhost:3000`.
 
-### Option 3: Python Server
+### 2. Start Both React Frontend & Node.js API Concurrently
 ```bash
-python -m http.server 3000
+npm run dev:all
 ```
+* React Frontend will run on: `http://localhost:3000`
+* Node.js Express API will run on: `http://localhost:5000`
+
+### 3. Or Run Individually
+* **Frontend Only (Vite):** `npm run dev`
+* **Backend API Only:** `npm run server`
+* **Production Build:** `npm run build`
 
 ---
 
-## 📂 File Architecture
+## 📂 Project Architecture
+
 ```
 thecarattheory.com/
-├── index.html                  # Main luxury storefront
-├── logo-guide.html             # Brand identity & logo guidelines portal
-├── package.json                # Project configuration
-├── README.md                   # Documentation & overview
-└── assets/
-    ├── brand-identity-mockup.jpg # Velvet ring box & certificate mockup
-    ├── hero-banner.jpg          # Editorial hero photograph
-    ├── logo/
-    │   ├── logo-primary.svg     # Primary horizontal lockup (Light)
-    │   ├── logo-gold-dark.svg   # Champagne gold & white lockup (Dark)
-    │   ├── logo-stacked.svg     # Vertical emblem crest
-    │   ├── logo-monogram.svg    # 58-facet diamond icon mark
-    │   └── favicon.svg          # Browser tab icon
-    ├── css/
-    │   └── style.css            # Master styling & luxury design tokens
-    └── js/
-        ├── products-data.js     # Master product catalog & shape specs
-        └── main.js              # Storefront interaction & cart engine
+├── server/
+│   ├── server.js               # Node.js + Express API server
+│   └── data/
+│       └── products.js         # Backend product catalog & shape specs
+├── src/
+│   ├── main.jsx                # React root mount
+│   ├── App.jsx                 # Master application component
+│   ├── index.css               # Exact reference styling & color tokens
+│   ├── context/
+│   │   ├── CartContext.jsx     # Cart bag state & shipping threshold
+│   │   ├── WishlistContext.jsx # Saved items & persistence
+│   │   └── CurrencyContext.jsx # USD, EUR, GBP, INR, AED converter
+│   ├── components/
+│   │   ├── AnnouncementBar.jsx # Peach & Wine announcement bar
+│   │   ├── Header.jsx          # Header with logo, nav & search
+│   │   ├── HeroSlider.jsx      # "Lifetime Promises" banner
+│   │   ├── ShopByCategory.jsx  # Category cards
+│   │   ├── Bestsellers.jsx     # Bestselling products with tabs
+│   │   ├── ProductCard.jsx     # Metal switchers & price calculation
+│   │   ├── ShopByShape.jsx     # Interactive cut selector
+│   │   ├── FeaturedCollections.jsx # Solitaire, Designer, Everyday
+│   │   ├── DesignWithUs.jsx    # Custom ring builder
+│   │   ├── BookAppointment.jsx # Private consultation section
+│   │   ├── OurStory.jsx        # Story & heritage
+│   │   ├── OurPromise.jsx      # 5 Pillars
+│   │   ├── FAQSection.jsx      # Accordion
+│   │   ├── Footer.jsx          # Wine red multi-column footer
+│   │   ├── CartDrawer.jsx      # Slide-out bag with free shipping bar
+│   │   ├── WishlistDrawer.jsx  # Slide-out wishlist
+│   │   ├── QuickViewModal.jsx  # Product detail modal
+│   │   ├── AppointmentModal.jsx# VIP booking modal
+│   │   ├── SizingModal.jsx     # Ring sizing guide
+│   │   ├── SearchModal.jsx     # Live search modal
+│   │   └── LogoGuideModal.jsx  # Logo & brand identity guide
+│   └── data/
+│       └── products.js         # Client-side fallback catalog
+├── public/
+│   └── assets/                 # SVGs, mockups, and photography
+├── vite.config.js              # Vite config with backend proxy
+├── package.json                # Dependencies and scripts
+└── README.md
 ```
 
 ---
