@@ -2,28 +2,20 @@ import React from 'react';
 
 export const OurStory = ({ onOpenLogoGuide }) => {
   return (
-    <section className="split-banner ivory-bg" id="story">
-      <div className="split-media">
-        <img
-          src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=1000&q=80"
-          alt="Our Story"
-        />
-      </div>
+    <section className="section-padding our-story-section-ref" id="story">
+      <div className="container container-narrow" style={{ textAlign: 'center' }}>
+        <h2 className="title-ref" style={{ marginBottom: '1.5rem' }}>OUR STORY</h2>
 
-      <div className="split-content">
-        <h2 className="section-title">Our Story</h2>
-        <span className="section-subtitle">
-          The Theory Behind The Sparkle.
-        </span>
-        <p className="section-desc" style={{ marginBottom: '1.5rem' }}>
-          The Carat Theory was founded on an uncompromising principle: that modern diamond jewellery should embody both the highest physics of light reflection and complete ethical responsibility.
-        </p>
-        <p className="section-desc" style={{ marginBottom: '2rem' }}>
-          By eliminating the environmental destruction and opaque supply chains of traditional mining, we channel 100% of our focus into master craftsmanship, certified Type IIa purity, and direct-to-consumer value that lasts for generations.
+        <p style={{ fontSize: '0.92rem', lineHeight: '1.85', color: '#333', maxWidth: '780px', margin: '0 auto 1.5rem' }}>
+          At <strong>The Carat Theory</strong>, we believe true luxury is born from purity — of design, of values, and of intent. Each piece is crafted with <strong>ethically grown lab diamonds</strong>, combining brilliance with responsibility. Our creations reflect a <strong>modern promise</strong>: timeless beauty without compromise on sustainability or conscience.
         </p>
 
-        <button onClick={onOpenLogoGuide} className="btn btn-outline-wine">
-          Know More
+        <p style={{ fontSize: '0.88rem', color: '#555', fontStyle: 'italic', marginBottom: '2.5rem' }}>
+          Because every diamond should shine as purely as the promise it represents.
+        </p>
+
+        <button onClick={onOpenLogoGuide} className="btn-pill-wine-ref">
+          KNOW MORE
         </button>
       </div>
     </section>

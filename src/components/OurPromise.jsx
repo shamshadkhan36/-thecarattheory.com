@@ -4,30 +4,30 @@ const PROMISES = [
   {
     title: 'LIFETIME BUYBACK',
     subtitle: 'A Policy, made for you.',
-    desc: 'Our signature guarantee ensures your investment is backed by lifetime buyback and full upgrade value retention.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M23 4v6h-6M1 20v-6h6" />
-        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+        <line x1="12" y1="22.08" x2="12" y2="12" />
       </svg>
     )
   },
   {
     title: 'CERTIFIED JEWELRY',
-    subtitle: 'Pure. Certified. Provenance.',
-    desc: 'Every diamond is independently evaluated by IGI or GIA, complete with a serial laser inscription on the girdle.',
+    subtitle: 'Pure. Promise. Certified.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
+        <polygon points="6 3 18 3 22 9 12 22 2 9" />
+        <line x1="2" y1="9" x2="22" y2="9" />
+        <polyline points="10 3 12 9 14 3" />
       </svg>
     )
   },
   {
     title: 'FREE SHIPPING',
     subtitle: 'Pure Service. Promised Delivery.',
-    desc: 'Fully insured, armored express delivery directly to your hands in unmarked, tamper-evident luxury presentation packaging.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
         <rect x="1" y="3" width="15" height="13" />
         <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
         <circle cx="5.5" cy="18.5" r="2.5" />
@@ -38,21 +38,23 @@ const PROMISES = [
   {
     title: 'EXCHANGE & UPGRADE',
     subtitle: 'Pure Flexibility. With a promise to evolve.',
-    desc: 'Evolve your diamond with life milestones. Enjoy 100% credit value toward upgrading your center stone anytime.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
+        <polyline points="17 11 21 7 17 3" />
+        <line x1="21" y1="7" x2="9" y2="7" />
+        <polyline points="7 13 3 17 7 21" />
+        <line x1="3" y1="17" x2="15" y2="17" />
       </svg>
     )
   },
   {
     title: 'SUSTAINABLE & ECO-FRIENDLY',
     subtitle: 'Pure materials, with a promise of responsibility.',
-    desc: 'Conflict-free lab engineered diamonds grown using renewable power, paired with 100% recycled 18k solid gold & platinum.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12A10 10 0 0 1 12 2z" />
-        <path d="M12 6v6l4 2" />
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#55142A" strokeWidth="1.6">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
       </svg>
     )
   }
@@ -60,19 +62,16 @@ const PROMISES = [
 
 export const OurPromise = () => {
   return (
-    <section className="section-padding promise-section" id="promises">
+    <section className="promise-banner-ref" id="promises">
       <div className="container">
-        <div className="section-head">
-          <h2 className="section-title">Our Promise</h2>
-        </div>
+        <h2 className="promise-title-ref">OUR PROMISE</h2>
 
-        <div className="promises-grid">
-          {PROMISES.map((p) => (
-            <div key={p.title} className="promise-card">
-              <div className="promise-icon-wrap">{p.icon}</div>
-              <h3 className="promise-card-title">{p.title}</h3>
-              <p className="promise-card-sub">{p.subtitle}</p>
-              <p className="promise-card-desc">{p.desc}</p>
+        <div className="promise-grid-ref">
+          {PROMISES.map((item) => (
+            <div key={item.title} className="promise-item-ref">
+              <div className="promise-icon-ref">{item.icon}</div>
+              <h4 className="promise-name-ref">{item.title}</h4>
+              <p className="promise-sub-ref">{item.subtitle}</p>
             </div>
           ))}
         </div>

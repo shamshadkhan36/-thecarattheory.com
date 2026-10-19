@@ -1,47 +1,39 @@
 import React from 'react';
 
-const COLLECTIONS = [
+const FEATURED = [
   {
     name: 'SOLITAIRE',
-    subtitle: 'Timeless Icons of Solitary Fire',
-    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80',
+    image: 'https://purepromisediamonds.com/cdn/shop/collections/20251112_1346_Pink_Gradient_Background_remix_01k9vj4409ekvvwm12jmqkh1b1.png',
     link: '#collection'
   },
   {
     name: 'DESIGNER',
-    subtitle: 'Contemporary Haute Joaillerie Masterworks',
-    image: 'https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=800&q=80',
+    image: 'https://purepromisediamonds.com/cdn/shop/collections/20251112_1328_Elegant_Diamond_Ring_remix_01k9vh3w7refsvrzhpy9yb157k.png',
     link: '#collection'
   },
   {
     name: 'EVERYDAY',
-    subtitle: 'Effortless Diamond Radiance for Daily Wear',
-    image: 'https://images.unsplash.com/photo-1611591475152-47354c030386?auto=format&fit=crop&w=800&q=80',
+    image: 'https://purepromisediamonds.com/cdn/shop/collections/45_3_939494e0-e999-4278-93e2-7ebfc5c43ac6.png',
     link: '#collection'
   }
 ];
 
 export const FeaturedCollections = () => {
   return (
-    <section className="section-padding" style={{ backgroundColor: 'var(--c-white)' }}>
+    <section className="section-padding" style={{ backgroundColor: 'var(--c-white)', paddingTop: '0' }}>
       <div className="container">
-        <div className="section-head">
-          <h2 className="section-title">Featured Collections</h2>
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <span className="eyebrow-ref">TRENDING COLLECTIONS</span>
+          <h2 className="title-ref">FEATURED COLLECTIONS</h2>
         </div>
 
-        <div className="featured-colls-grid">
-          {COLLECTIONS.map((coll) => (
-            <a key={coll.name} href={coll.link} className="coll-card">
-              <img src={coll.image} alt={coll.name} />
-              <div className="coll-card-overlay">
-                <h3 className="coll-card-title">{coll.name}</h3>
-                <p style={{ fontSize: '0.85rem', color: '#FFF', marginBottom: '1rem', opacity: 0.9 }}>
-                  {coll.subtitle}
-                </p>
-                <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.8rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--c-peach)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                  Explore Collection →
-                </span>
+        <div className="featured-grid-ref">
+          {FEATURED.map((f) => (
+            <a key={f.name} href={f.link} className="featured-card-ref">
+              <div className="featured-img-wrap">
+                <img src={f.image} alt={f.name} />
               </div>
+              <h3 className="featured-card-title">{f.name}</h3>
             </a>
           ))}
         </div>

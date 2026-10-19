@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -10,12 +10,11 @@ import { ShopByCategory } from './components/ShopByCategory';
 import { Bestsellers } from './components/Bestsellers';
 import { ShopByShape } from './components/ShopByShape';
 import { FeaturedCollections } from './components/FeaturedCollections';
-import { DesignWithUs } from './components/DesignWithUs';
-import { BookAppointment } from './components/BookAppointment';
 import { OurStory } from './components/OurStory';
 import { OurPromise } from './components/OurPromise';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
+import { FloatingWidgets } from './components/FloatingWidgets';
 
 import { CartDrawer } from './components/CartDrawer';
 import { WishlistDrawer } from './components/WishlistDrawer';
@@ -28,27 +27,12 @@ import { LogoGuideModal } from './components/LogoGuideModal';
 import { PRODUCTS_DATA } from './data/products';
 
 export function App() {
-  const [products, setProducts] = useState(PRODUCTS_DATA);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
   const [appointmentSubject, setAppointmentSubject] = useState('');
   const [isSizingOpen, setIsSizingOpen] = useState(false);
   const [isLogoGuideOpen, setIsLogoGuideOpen] = useState(false);
-
-  useEffect(() => {
-    // Attempt fetch from Node.js Express backend
-    fetch('/api/products')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.success && data.data) {
-          setProducts(data.data);
-        }
-      })
-      .catch(() => {
-        // Fallback to static PRODUCTS_DATA
-      });
-  }, []);
 
   const handleOpenAppointment = (subject = '') => {
     setAppointmentSubject(subject);
@@ -60,55 +44,49 @@ export function App() {
       <CartProvider>
         <WishlistProvider>
           <div className="site-wrapper">
-            {/* 1. Announcement Bar (Color Scheme 5: Peach & Wine) */}
+            {/* 1. Announcement Bar (Soft Peach #FFF3E3 with Wine #55142A text) */}
             <AnnouncementBar />
 
-            {/* 2. Main Header */}
+            {/* 2. Solid Wine Header (Matching Image 1 & 2) */}
             <Header
               onOpenSearch={() => setIsSearchOpen(true)}
               onOpenLogoGuide={() => setIsLogoGuideOpen(true)}
               onOpenAppointment={() => handleOpenAppointment()}
             />
 
-            {/* 3. Hero Slideshow ("Lifetime Promises") */}
+            {/* 3. Hero Section (Matching Image 1) */}
             <HeroSlider onOpenAppointment={handleOpenAppointment} />
 
-            {/* 4. SHOP BY CATEGORY */}
+            {/* 4. SHOP BY CATEGORY (Matching Image 2: Rounded Velvet Cards) */}
             <ShopByCategory />
 
-            {/* 5. BESTSELLERS */}
-            <Bestsellers
-              products={products}
-              onQuickView={(p) => setQuickViewProduct(p)}
-            />
+            {/* 5. BESTSELLERS (Matching Image 3: 4 Rings with Metal Purity & Color Dots) */}
+            <Bestsellers />
 
-            {/* 6. SHOP BY SHAPE */}
+            {/* 6. SHOP BY SHAPE (Matching Image 4: 8 Diamond Cuts) */}
             <ShopByShape />
 
-            {/* 7. FEATURED COLLECTIONS */}
+            {/* 7. FEATURED COLLECTIONS (Matching Image 4 Bottom) */}
             <FeaturedCollections />
 
-            {/* 8. DESIGN WITH US */}
-            <DesignWithUs onOpenAppointment={handleOpenAppointment} />
-
-            {/* 9. BOOK AN APPOINTMENT */}
-            <BookAppointment onOpenAppointment={handleOpenAppointment} />
-
-            {/* 10. OUR STORY */}
+            {/* 8. OUR STORY (Matching Image 5 Top) */}
             <OurStory onOpenLogoGuide={() => setIsLogoGuideOpen(true)} />
 
-            {/* 11. OUR PROMISE (5 Pillars) */}
+            {/* 9. OUR PROMISE (Matching Image 5 Middle: Soft Peach Banner with 5 Columns) */}
             <OurPromise />
 
-            {/* 12. Frequently asked questions */}
+            {/* 10. Frequently asked questions (Matching Image 5 Bottom) */}
             <FAQSection />
 
-            {/* 13. Footer */}
+            {/* 11. Footer (Wine Red #55142A with Peach #FFF3E3 Links) */}
             <Footer
               onOpenSizing={() => setIsSizingOpen(true)}
               onOpenAppointment={() => handleOpenAppointment()}
               onOpenLogoGuide={() => setIsLogoGuideOpen(true)}
             />
+
+            {/* 12. Floating Widgets: Gift "Join Now" & WhatsApp (Matching Screenshots) */}
+            <FloatingWidgets onOpenAppointment={() => handleOpenAppointment()} />
 
             {/* Drawers & Modals */}
             <CartDrawer />
@@ -129,7 +107,7 @@ export function App() {
             <SearchModal
               isOpen={isSearchOpen}
               onClose={() => setIsSearchOpen(false)}
-              products={products}
+              products={PRODUCTS_DATA}
               onSelectProduct={(p) => setQuickViewProduct(p)}
             />
             <LogoGuideModal
