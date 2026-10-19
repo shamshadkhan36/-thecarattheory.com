@@ -3,17 +3,17 @@ import React from 'react';
 const FEATURED = [
   {
     name: 'SOLITAIRE',
-    image: 'https://purepromisediamonds.com/cdn/shop/collections/20251112_1346_Pink_Gradient_Background_remix_01k9vj4409ekvvwm12jmqkh1b1.png',
+    image: '/assets/products/tct-solitaire-ring.jpg',
     link: '#collection'
   },
   {
     name: 'DESIGNER',
-    image: 'https://purepromisediamonds.com/cdn/shop/collections/20251112_1328_Elegant_Diamond_Ring_remix_01k9vh3w7refsvrzhpy9yb157k.png',
+    image: '/assets/products/tct-three-stone-yellow.jpg',
     link: '#collection'
   },
   {
     name: 'EVERYDAY',
-    image: 'https://purepromisediamonds.com/cdn/shop/collections/45_3_939494e0-e999-4278-93e2-7ebfc5c43ac6.png',
+    image: '/assets/products/tct-tennis-bracelet.jpg',
     link: '#collection'
   }
 ];

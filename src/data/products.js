@@ -15,23 +15,17 @@ export const PRIMARY_PRODUCT = {
   metals: ["925 Silver", "9K", "14K", "18K"],
   colors: [
     { id: "yellow", name: "Yellow Gold", hex: "#F2C94C", imageIndex: 0 },
-    { id: "white", name: "White Gold", hex: "#C4C4C4", imageIndex: 6 },
-    { id: "rose", name: "Rose Gold", hex: "#E08E88", imageIndex: 8 }
+    { id: "white", name: "White Gold", hex: "#C4C4C4", imageIndex: 1 },
+    { id: "rose", name: "Rose Gold", hex: "#E08E88", imageIndex: 2 }
   ],
   images: [
-    { src: "/assets/products/lennon/hylr015-1.png", alt: "Lennon Three Stone Ring Front View", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-11.png", alt: "Lennon Three Stone Ring Angled View", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-5.png", alt: "Lennon Three Stone Ring Side Profile", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-7.png", alt: "Lennon Ring 360 Spin Video", isVideo: true },
-    { src: "/assets/products/lennon/hylr015-3.png", alt: "Lennon Ring Detail Angle", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-10.png", alt: "Lennon Diamond Shank Pavé", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-4.png", alt: "Lennon White Gold Front", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-9.png", alt: "Lennon White Gold 360 Spin", isVideo: true },
-    { src: "/assets/products/lennon/hylr015-2.png", alt: "Lennon Rose Gold Front", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-6.png", alt: "Lennon Rose Gold Side", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-8.png", alt: "Lennon Rose Gold Profile", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-12.png", alt: "Lennon Top Down Symmetry", isVideo: false },
-    { src: "/assets/products/lennon/hylr015-14.jpg", alt: "Lennon On-Model Hand Shot", isVideo: false }
+    { src: "/assets/products/tct-three-stone-yellow.jpg", alt: "The Carat Theory Lennon Three Stone Ring 18K Yellow Gold", isVideo: false },
+    { src: "/assets/products/tct-three-stone-white.jpg", alt: "The Carat Theory Lennon Three Stone Ring 18K White Gold", isVideo: false },
+    { src: "/assets/products/tct-three-stone-rose.jpg", alt: "The Carat Theory Lennon Three Stone Ring 18K Rose Gold", isVideo: false },
+    { src: "/assets/products/tct-ring-hand-model.jpg", alt: "The Carat Theory Lennon Three Stone Ring On-Model Hand Shot", isVideo: false },
+    { src: "/assets/products/tct-solitaire-ring.jpg", alt: "The Carat Theory Solitaire Diamond Ring Alternative Angle", isVideo: false },
+    { src: "/assets/products/tct-tennis-bracelet.jpg", alt: "The Carat Theory 18K Gold Diamond Tennis Bracelet", isVideo: false },
+    { src: "/assets/products/tct-tennis-necklace.jpg", alt: "The Carat Theory 18K Gold Layered Diamond Tennis Necklace", isVideo: false }
   ],
   description: "Lennon Three Stone Ring brings a touch of luxury to your everyday attire, infusing it with creative elegance. Crafted with gold and diamonds, it's an ideal accessory for any occasion. Your order includes quality packaging and diamond certificate.",
   details: [
@@ -60,7 +54,7 @@ export const RELATED_PRODUCTS = [
     name: "Kyla Three Stone Ring",
     priceINR: 103589,
     priceUSD: 1245,
-    image: "/assets/rings/kyla-yellow.jpg",
+    image: "/assets/products/tct-three-stone-yellow.jpg",
     metals: ["925 Silver", "9K", "14K", "18K"],
     colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
   },
@@ -69,7 +63,7 @@ export const RELATED_PRODUCTS = [
     name: "Viviana Solitaire Ring",
     priceINR: 31416,
     priceUSD: 378,
-    image: "/assets/products/viviana-solitaire.png",
+    image: "/assets/products/tct-solitaire-ring.jpg",
     metals: ["925 Silver", "9K", "14K", "18K"],
     colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
   },
@@ -78,7 +72,7 @@ export const RELATED_PRODUCTS = [
     name: "Evie Tennis Bracelet",
     priceINR: 55678,
     priceUSD: 670,
-    image: "/assets/products/evie-bracelet.jpg",
+    image: "/assets/products/tct-tennis-bracelet.jpg",
     metals: ["925silver", "9K", "14K", "18K"],
     colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
   },
@@ -87,7 +81,7 @@ export const RELATED_PRODUCTS = [
     name: "Giselle Tennis Necklace",
     priceINR: 22747,
     priceUSD: 275,
-    image: "/assets/products/giselle-necklace.jpg",
+    image: "/assets/products/tct-tennis-necklace.jpg",
     metals: ["925 silver", "9K", "14K", "18K"],
     colors: ["#F2C94C", "#C4C4C4", "#E08E88"]
   }
@@ -151,17 +145,17 @@ export const BESTSELLER_RINGS = [
 export const CATEGORIES_DATA = [
   {
     name: "RINGS",
-    image: "/assets/category-rings.png",
+    image: "/assets/tct-category-rings.jpg",
     link: "#collection"
   },
   {
     name: "EARRINGS",
-    image: "/assets/category-earrings.png",
+    image: "/assets/tct-category-earrings.jpg",
     link: "#collection"
   },
   {
     name: "BRACELETS",
-    image: "/assets/category-bracelets.png",
+    image: "/assets/tct-category-bracelets.jpg",
     link: "#collection"
   }
 ];
@@ -193,9 +187,9 @@ export const PRODUCTS_DATA = [
     badge: "Bestseller",
     description: "An architectural icon of balanced harmony with three graduated brilliant diamonds.",
     metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3081_9_748f9614-e9e8-4ed7-8bce-f6919ca44e94.jpg" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3081_5_4283f03a-b48d-47d8-b123-6e77009590f5.jpg" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3081_3_701b5855-09a1-4e98-8016-9d543bb2f8c5.jpg" }
+      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-three-stone-yellow.jpg" },
+      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
+      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
     ],
     carats: [
       { carat: 1.0, multiplier: 1.0, label: "1.00 Carat" },
@@ -219,9 +213,9 @@ export const PRODUCTS_DATA = [
     badge: "Trending",
     description: "Three scintillating round brilliant cut stones mounted in classic claw prongs.",
     metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/R3_RD_1070001.png" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/R3_RD_1070011.png" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "https://purepromisediamonds.com/cdn/shop/files/R3_RD_1070005.png" }
+      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-solitaire-ring.jpg" },
+      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
+      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
     ],
     carats: [
       { carat: 1.0, multiplier: 1.0, label: "1.00 Carat" },
@@ -244,9 +238,9 @@ export const PRODUCTS_DATA = [
     badge: "Iconic",
     description: "Prominent round brilliant flanked by two pear side diamonds.",
     metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3007_1.jpg" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3007_7.jpg" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3007_5.jpg" }
+      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-tennis-bracelet.jpg" },
+      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
+      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
     ],
     carats: [
       { carat: 1.5, multiplier: 1.0, label: "1.50 Carat" },
@@ -269,9 +263,9 @@ export const PRODUCTS_DATA = [
     badge: "Special",
     description: "Three matched oval cut stones resting side by side with endless fire.",
     metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3129_14.png" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3129_7.png" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "https://purepromisediamonds.com/cdn/shop/files/HYLR3129_8.png" }
+      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-tennis-necklace.jpg" },
+      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
+      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
     ],
     carats: [
       { carat: 1.0, multiplier: 1.0, label: "1.00 Carat" },

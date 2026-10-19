@@ -5,12 +5,12 @@ export const HeroSlider = () => {
 
   const slides = [
     {
-      image: '/assets/hero-banner-exact.png',
-      alt: 'Pure Promise Diamonds Fine Jewellery'
+      image: '/assets/hero-banner.jpg',
+      alt: 'The Carat Theory Fine Jewellery Editorial Collection'
     },
     {
-      image: '/assets/hero-slide-model2.png',
-      alt: 'Pure Promise Diamonds Earrings Editorial'
+      image: '/assets/brand-identity-mockup.jpg',
+      alt: 'The Carat Theory Luxury Diamond Presentation Box and Solitaire'
     }
   ];
 

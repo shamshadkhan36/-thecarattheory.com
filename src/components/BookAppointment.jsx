@@ -5,8 +5,8 @@ export const BookAppointment = ({ onOpenAppointment }) => {
     <section className="split-banner reverse peach-bg" id="appointment">
       <div className="split-media">
         <img
-          src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1000&q=80"
-          alt="Book An Appointment"
+          src="/assets/products/tct-ring-hand-model.jpg"
+          alt="The Carat Theory Private Appointment"
         />
       </div>
 

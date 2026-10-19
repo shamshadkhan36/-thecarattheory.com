@@ -3,7 +3,7 @@ import React from 'react';
 export const GOLD_MEGA_MENU = [
   {
     title: 'Rings',
-    image: '/assets/mega/gold-rings.png',
+    image: '/assets/products/tct-three-stone-yellow.jpg',
     link: '#collection',
     sublinks: [
       { name: 'All Rings', link: '#collection' },
@@ -16,7 +16,7 @@ export const GOLD_MEGA_MENU = [
   },
   {
     title: 'Earrings',
-    image: '/assets/mega/gold-earrings.png',
+    image: '/assets/tct-category-earrings.jpg',
     link: '#collection',
     sublinks: [
       { name: 'All Earrings', link: '#collection' },
@@ -28,7 +28,7 @@ export const GOLD_MEGA_MENU = [
   },
   {
     title: 'Bracelets',
-    image: '/assets/mega/gold-bracelets.png',
+    image: '/assets/products/tct-tennis-bracelet.jpg',
     link: '#collection',
     sublinks: [
       { name: 'All Bangles & Bracelets', link: '#collection' },
@@ -38,7 +38,7 @@ export const GOLD_MEGA_MENU = [
   },
   {
     title: 'Pendants',
-    image: '/assets/mega/gold-pendants.png',
+    image: '/assets/products/tct-solitaire-ring.jpg',
     link: '#collection',
     sublinks: [
       { name: 'All Pendants', link: '#collection' },
@@ -48,13 +48,13 @@ export const GOLD_MEGA_MENU = [
   },
   {
     title: 'Necklaces',
-    image: '/assets/mega/gold-necklaces.png',
+    image: '/assets/products/tct-tennis-necklace.jpg',
     link: '#collection',
     sublinks: []
   },
   {
     title: 'Nosepins',
-    image: '/assets/mega/gold-nosepins.png',
+    image: '/assets/products/tct-three-stone-rose.jpg',
     link: '#collection',
     sublinks: []
   }
@@ -63,27 +63,27 @@ export const GOLD_MEGA_MENU = [
 export const SILVER_MEGA_MENU = [
   {
     title: 'Rings',
-    image: '/assets/mega/silver-rings.png',
+    image: '/assets/products/tct-three-stone-white.jpg',
     link: '#collection'
   },
   {
     title: 'Earrings',
-    image: '/assets/mega/silver-earrings.png',
+    image: '/assets/tct-category-earrings.jpg',
     link: '#collection'
   },
   {
     title: 'Bracelets',
-    image: '/assets/mega/silver-bracelets.webp',
+    image: '/assets/products/tct-tennis-bracelet.jpg',
     link: '#collection'
   },
   {
     title: 'Pendants',
-    image: '/assets/mega/silver-pendants.png',
+    image: '/assets/products/tct-three-stone-white.jpg',
     link: '#collection'
   },
   {
     title: 'Necklaces',
-    image: '/assets/mega/silver-necklaces.jpg',
+    image: '/assets/products/tct-tennis-necklace.jpg',
     link: '#collection'
   }
 ];
