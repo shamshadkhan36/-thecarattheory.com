@@ -8,7 +8,7 @@ export const OurStory = ({ onOpenLogoGuide }) => {
 
         <div className="story-content-ref">
           <p className="story-p-ref">
-            At <strong>Pure Promise</strong>, we believe true luxury is born from purity — of design, of values, and of intent. Each piece is crafted with <strong>ethically grown lab diamonds</strong>, combining brilliance with responsibility.<br />
+            At <strong>The Carat Theory</strong>, we believe true luxury is born from purity — of design, of values, and of intent. Each piece is crafted with <strong>ethically grown lab diamonds</strong>, combining brilliance with responsibility.<br />
             Our creations reflect a <strong>modern promise</strong>: timeless beauty without compromise on sustainability or conscience.
           </p>
 

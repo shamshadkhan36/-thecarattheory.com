@@ -29,7 +29,7 @@ export const Footer = ({ onOpenSizing, onOpenAppointment, onOpenLogoGuide }) => 
           {/* Brand Info */}
           <div>
             <img
-              src="/assets/logo/logo-gold-dark.svg"
+              src="/assets/logo/the-carat-theory-gold.svg"
               alt="The Carat Theory"
               style={{ height: '48px', marginBottom: '1.25rem' }}
             />

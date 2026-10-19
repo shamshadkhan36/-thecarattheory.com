@@ -9,30 +9,13 @@ export const Header = ({ onOpenSearch, onOpenAppointment }) => {
   return (
     <header className="ref-header">
       <div className="container header-container-ref">
-        {/* Brand Logo matching reference screenshot */}
-        <a href="#" className="brand-logo-ref" title="Pure Promise Diamonds">
+        {/* Brand Logo for The Carat Theory */}
+        <a href="#" className="brand-logo-ref" title="The Carat Theory Diamonds">
           <img
-            src="/assets/pure_promise_logo.png"
-            alt="Pure Promise Diamonds"
+            src="/assets/logo/the-carat-theory-white.svg"
+            alt="The Carat Theory Diamonds"
             className="brand-logo-img-ref"
-            onError={(e) => {
-              // fallback if image not loaded
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling.style.display = 'flex';
-            }}
           />
-          <div className="brand-fallback-ref" style={{ display: 'none', alignItems: 'center', gap: '0.65rem' }}>
-            <svg width="34" height="34" viewBox="0 0 100 100" fill="none" stroke="#FFF" strokeWidth="2.5">
-              <circle cx="50" cy="50" r="46" stroke="#FFF" strokeWidth="2" />
-              <polygon points="25,25 75,25 90,48 50,88 10,48" stroke="#FFF" strokeWidth="2.5" />
-              <polygon points="35,25 65,25 75,48 25,48" stroke="#FFF" strokeWidth="2" />
-              <line x1="50" y1="48" x2="50" y2="88" stroke="#FFF" strokeWidth="2" />
-            </svg>
-            <div className="brand-text-ref">
-              <span className="brand-title-ref">PURE PROMISE</span>
-              <span className="brand-sub-ref">DIAMONDS</span>
-            </div>
-          </div>
         </a>
 
         {/* Center Nav Links (SHOP GOLD, SHOP SILVER, CUSTOMISE, CONTACT, EDUCATE) */}
