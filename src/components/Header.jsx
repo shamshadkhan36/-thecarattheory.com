@@ -1,30 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+import { MegaMenu } from './MegaMenu';
 
 export const Header = ({ onOpenSearch, onOpenAppointment }) => {
   const { cartCount, setIsCartOpen } = useCart();
   const { wishlistCount } = useWishlist();
+  const [activeMegaMenu, setActiveMegaMenu] = useState(null);
+
+  const handleNavClick = (menuType, e) => {
+    e.preventDefault();
+    setActiveMegaMenu((prev) => (prev === menuType ? null : menuType));
+  };
 
   return (
-    <header className="ref-header">
+    <header
+      className="ref-header"
+      onMouseLeave={() => setActiveMegaMenu(null)}
+    >
       <div className="container header-container-ref">
-        {/* Brand Logo for The Carat Theory */}
-        <a href="#" className="brand-logo-ref" title="The Carat Theory Diamonds">
+        {/* Brand Logo matching circled reference */}
+        <a href="#" className="brand-logo-ref" title="Pure Promise Diamonds">
           <img
-            src="/assets/logo/the-carat-theory-white.svg"
-            alt="The Carat Theory Diamonds"
+            src="/assets/logo/pure-promise-logo.png"
+            alt="Pure Promise Diamonds"
             className="brand-logo-img-ref"
           />
         </a>
 
         {/* Center Nav Links (SHOP GOLD, SHOP SILVER, CUSTOMISE, CONTACT, EDUCATE) */}
         <nav className="center-nav-ref">
-          <a href="#collection" className="nav-item-ref">SHOP GOLD</a>
-          <a href="#collection" className="nav-item-ref">SHOP SILVER</a>
-          <a href="#customise" className="nav-item-ref">CUSTOMISE</a>
-          <button onClick={onOpenAppointment} className="nav-item-ref nav-btn-ref">CONTACT</button>
-          <a href="#shapes" className="nav-item-ref">EDUCATE</a>
+          <div
+            className="nav-item-wrapper"
+            onMouseEnter={() => setActiveMegaMenu('gold')}
+          >
+            <a
+              href="#collection"
+              className={`nav-item-ref ${activeMegaMenu === 'gold' ? 'active-nav-link' : ''}`}
+              onClick={(e) => handleNavClick('gold', e)}
+            >
+              SHOP GOLD
+            </a>
+          </div>
+
+          <div
+            className="nav-item-wrapper"
+            onMouseEnter={() => setActiveMegaMenu('silver')}
+          >
+            <a
+              href="#collection"
+              className={`nav-item-ref ${activeMegaMenu === 'silver' ? 'active-nav-link' : ''}`}
+              onClick={(e) => handleNavClick('silver', e)}
+            >
+              SHOP SILVER
+            </a>
+          </div>
+
+          <a
+            href="#customise"
+            className="nav-item-ref"
+            onMouseEnter={() => setActiveMegaMenu(null)}
+          >
+            CUSTOMISE
+          </a>
+
+          <button
+            onClick={onOpenAppointment}
+            className="nav-item-ref nav-btn-ref"
+            onMouseEnter={() => setActiveMegaMenu(null)}
+          >
+            CONTACT
+          </button>
+
+          <a
+            href="#shapes"
+            className="nav-item-ref"
+            onMouseEnter={() => setActiveMegaMenu(null)}
+          >
+            EDUCATE
+          </a>
         </nav>
 
         {/* Right Action Icons (Search, Profile, Cart Bag) */}
@@ -53,6 +107,12 @@ export const Header = ({ onOpenSearch, onOpenAppointment }) => {
           </button>
         </div>
       </div>
+
+      {/* Mega Menu Dropdown */}
+      <MegaMenu
+        type={activeMegaMenu}
+        onClose={() => setActiveMegaMenu(null)}
+      />
     </header>
   );
 };

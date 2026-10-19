@@ -7,6 +7,10 @@ export const HeroSlider = () => {
     {
       image: '/assets/hero-banner-exact.png',
       alt: 'Pure Promise Diamonds Fine Jewellery'
+    },
+    {
+      image: '/assets/hero-slide-model2.png',
+      alt: 'Pure Promise Diamonds Earrings Editorial'
     }
   ];
 

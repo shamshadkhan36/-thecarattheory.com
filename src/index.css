@@ -982,6 +982,176 @@ button, input, select, textarea {
   z-index: 10;
 }
 
+/* ==========================================================================
+   MEGA MENU (Matching Screenshots 1 & 2)
+   ========================================================================== */
+.nav-item-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+.active-nav-link {
+  color: #FFF !important;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.mega-menu-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(85, 20, 42, 0.08);
+  z-index: 1000;
+  animation: megaMenuFadeIn 0.22s ease-out;
+}
+
+@keyframes megaMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mega-menu-content {
+  padding: 2.25rem 0 3rem;
+  color: #1a1a1a;
+}
+
+/* --- GOLD MEGA MENU (Screenshot 1: 6 columns with dark maroon cards) --- */
+.mega-menu-gold-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+}
+
+.mega-menu-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-img-box-gold {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #3D0B1B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.mega-img-box-gold img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.mega-menu-col:hover .mega-img-box-gold img {
+  transform: scale(1.06);
+}
+
+.mega-col-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.65rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.mega-col-title:hover {
+  color: var(--c-wine);
+}
+
+.mega-sublinks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mega-sublinks-list a {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  color: #4a4a4a;
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+  display: inline-block;
+}
+
+.mega-sublinks-list a:hover {
+  color: var(--c-wine);
+  transform: translateX(2px);
+}
+
+/* --- SILVER MEGA MENU (Screenshot 2: 5 columns on pure white background) --- */
+.mega-menu-silver-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.mega-menu-silver-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.mega-img-box-silver {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.mega-img-box-silver img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+}
+
+.mega-menu-silver-item:hover .mega-img-box-silver img {
+  transform: scale(1.08);
+}
+
+.mega-silver-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  transition: color 0.2s ease;
+}
+
+.mega-menu-silver-item:hover .mega-silver-label {
+  color: var(--c-wine);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .center-nav-ref {
