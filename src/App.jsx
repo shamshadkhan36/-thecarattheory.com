@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -17,6 +17,7 @@ import { OurPromise } from './components/OurPromise';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { FloatingWidgets } from './components/FloatingWidgets';
+import { AdminPanel } from './components/AdminPanel';
 
 import { CartDrawer } from './components/CartDrawer';
 import { WishlistDrawer } from './components/WishlistDrawer';
@@ -28,14 +29,18 @@ import { LogoGuideModal } from './components/LogoGuideModal';
 import { ProductPage } from './components/ProductPage';
 
 import { PRODUCTS_DATA, PRIMARY_PRODUCT } from './data/products';
+import { getStoredProducts } from './services/adminStore';
 
 export function App() {
   const [currentView, setCurrentView] = useState(() => {
-    if (typeof window !== 'undefined' && window.location.hash.includes('product')) {
-      return 'product';
+    if (typeof window !== 'undefined') {
+      if (window.location.hash.includes('admin')) return 'admin';
+      if (window.location.hash.includes('product')) return 'product';
     }
     return 'home';
   });
+
+  const [liveProducts, setLiveProducts] = useState(getStoredProducts);
   const [selectedProduct, setSelectedProduct] = useState(PRIMARY_PRODUCT);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -48,18 +53,29 @@ export function App() {
   const [catalogCategory, setCatalogCategory] = useState('all');
   const [catalogShape, setCatalogShape] = useState('All');
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleHash = () => {
       if (typeof window !== 'undefined') {
-        if (window.location.hash.includes('product')) {
+        if (window.location.hash.includes('admin')) {
+          setCurrentView('admin');
+        } else if (window.location.hash.includes('product')) {
           setCurrentView('product');
         } else if (window.location.hash.includes('home')) {
           setCurrentView('home');
         }
       }
     };
+
+    const handleCatalogUpdate = () => {
+      setLiveProducts(getStoredProducts());
+    };
+
     window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+    window.addEventListener('tct:catalog-updated', handleCatalogUpdate);
+    return () => {
+      window.removeEventListener('hashchange', handleHash);
+      window.removeEventListener('tct:catalog-updated', handleCatalogUpdate);
+    };
   }, []);
 
   const handleOpenAppointment = (subject = '') => {
@@ -84,10 +100,18 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleOpenAdmin = () => {
+    setCurrentView('admin');
+    if (typeof window !== 'undefined') {
+      window.location.hash = 'admin';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleCategoryNav = (catId) => {
     setCatalogCategory(catId);
     setCatalogShape('All');
-    if (currentView === 'product') {
+    if (currentView !== 'home') {
       handleGoHome();
     }
     setTimeout(() => {
@@ -98,7 +122,7 @@ export function App() {
 
   const handleShapeNav = (shapeName) => {
     setCatalogShape(shapeName);
-    if (currentView === 'product') {
+    if (currentView !== 'home') {
       handleGoHome();
     }
     setTimeout(() => {
@@ -107,15 +131,26 @@ export function App() {
     }, 100);
   };
 
+  // If Admin View is active, render the dedicated Atelier Admin Panel
+  if (currentView === 'admin') {
+    return (
+      <AdminPanel
+        onBackToStorefront={handleGoHome}
+        onSelectProduct={handleSelectProduct}
+      />
+    );
+  }
+
   return (
     <CurrencyProvider>
       <CartProvider>
         <WishlistProvider>
           <div className="site-wrapper">
-            {/* 1. Announcement Bar (Soft Peach #FFF3E3 with Wine #55142A text) */}
+            {/* 1. Announcement Bar with Atelier Admin link */}
             <AnnouncementBar
               currentView={currentView}
               onToggleView={() => (currentView === 'product' ? handleGoHome() : handleSelectProduct(PRIMARY_PRODUCT))}
+              onOpenAdmin={handleOpenAdmin}
             />
 
             {/* 2. Solid Wine Header (The Carat Theory Logo) */}
@@ -179,7 +214,7 @@ export function App() {
               </>
             )}
 
-            {/* 12. Rare Carat Midnight Navy Accordion Footer (Matching Screenshot 2) */}
+            {/* 12. Five-Column Wine Footer Matching Exact Reference Screenshot */}
             <Footer
               onOpenSizing={() => setIsSizingOpen(true)}
               onOpenAppointment={() => handleOpenAppointment()}
@@ -188,7 +223,7 @@ export function App() {
               onSelectShape={handleShapeNav}
             />
 
-            {/* 13. Floating Blue Concierge Chat Widget with Online Dot (Matching Screenshots 1 & 2) */}
+            {/* 13. Floating Widgets (Join Now Gift on Left + WhatsApp on Right) */}
             <FloatingWidgets onOpenAppointment={() => handleOpenAppointment()} />
 
             {/* Drawers & Modals */}
@@ -211,7 +246,7 @@ export function App() {
             <SearchModal
               isOpen={isSearchOpen}
               onClose={() => setIsSearchOpen(false)}
-              products={PRODUCTS_DATA}
+              products={liveProducts}
               onSelectProduct={handleSelectProduct}
             />
             <LogoGuideModal

@@ -348,8 +348,9 @@ export const ProductPage = ({
                   type="button"
                   onClick={() => handleAddToCart(true)}
                   className="pdp-btn-add-cart"
+                  title="Add this diamond creation to your shopping bag"
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" style={{ flexShrink: 0 }}>
                     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
                     <line x1="3" y1="6" x2="21" y2="6" />
                     <path d="M16 10a4 4 0 0 1-8 0" />
@@ -362,8 +363,9 @@ export const ProductPage = ({
                   type="button"
                   onClick={handleBuyNow}
                   className="pdp-btn-buy-now"
+                  title="Instant checkout with insured armored delivery"
                 >
-                  Buy it now
+                  <span>Buy it now</span>
                 </button>
               </div>
 
