@@ -6,6 +6,7 @@ import { WishlistProvider } from './context/WishlistContext';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
 import { HeroSlider } from './components/HeroSlider';
+import { EditorialHero } from './components/EditorialHero';
 import { ShopByCategory } from './components/ShopByCategory';
 import { Bestsellers } from './components/Bestsellers';
 import { ShopByShape } from './components/ShopByShape';
@@ -135,19 +136,23 @@ export function App() {
               />
             ) : (
               <>
-                {/* 3. Hero Section (Matching Image 1) */}
-                <HeroSlider />
+                {/* 3. High-Fashion Editorial Hero (Christian Siriano for Rare Carat Theme) */}
+                <EditorialHero
+                  onShopRings={() => handleCategoryNav('rings')}
+                  onShopJewelry={() => handleCategoryNav('all')}
+                  onSelectProduct={handleSelectProduct}
+                />
 
-                {/* 4. SHOP BY CATEGORY (Matching Image 2: Rounded Velvet Cards) */}
+                {/* 4. SHOP BY CATEGORY (Rounded Velvet Cards) */}
                 <ShopByCategory onSelectCategory={handleCategoryNav} />
 
-                {/* 5. BESTSELLERS Spotlight (Matching Image 3: 4 Rings with Metal Purity & Color Dots) */}
+                {/* 5. BESTSELLERS Spotlight (4 Rings with Metal Purity & Color Dots) */}
                 <Bestsellers
                   onQuickView={setQuickViewProduct}
                   onSelectProduct={handleSelectProduct}
                 />
 
-                {/* 6. SHOP BY SHAPE (Matching Image 4: 8 Diamond Cuts) */}
+                {/* 6. SHOP BY SHAPE (8 Diamond Cuts) */}
                 <ShopByShape onSelectShape={handleShapeNav} />
 
                 {/* 7. ALL 242 CREATIONS CATALOG SECTION */}
@@ -160,28 +165,30 @@ export function App() {
                   onQuickView={setQuickViewProduct}
                 />
 
-                {/* 8. FEATURED COLLECTIONS (Matching Image 4 Bottom) */}
+                {/* 8. FEATURED COLLECTIONS */}
                 <FeaturedCollections />
 
-                {/* 9. OUR STORY (Matching Image 5 Top) */}
+                {/* 9. OUR STORY */}
                 <OurStory onOpenLogoGuide={() => setIsLogoGuideOpen(true)} />
 
-                {/* 10. OUR PROMISE (Matching Image 5 Middle: Soft Peach Banner with 5 Columns) */}
+                {/* 10. OUR PROMISE */}
                 <OurPromise />
 
-                {/* 11. Frequently asked questions (Matching Image 5 Bottom) */}
+                {/* 11. Frequently asked questions */}
                 <FAQSection />
               </>
             )}
 
-            {/* 12. Footer (Wine Red #55142A with Peach #FFF3E3 Links) */}
+            {/* 12. Rare Carat Midnight Navy Accordion Footer (Matching Screenshot 2) */}
             <Footer
               onOpenSizing={() => setIsSizingOpen(true)}
               onOpenAppointment={() => handleOpenAppointment()}
               onOpenLogoGuide={() => setIsLogoGuideOpen(true)}
+              onSelectCategory={handleCategoryNav}
+              onSelectShape={handleShapeNav}
             />
 
-            {/* 13. Floating Widgets: Gift "Join Now" & WhatsApp (Matching Screenshots) */}
+            {/* 13. Floating Blue Concierge Chat Widget with Online Dot (Matching Screenshots 1 & 2) */}
             <FloatingWidgets onOpenAppointment={() => handleOpenAppointment()} />
 
             {/* Drawers & Modals */}
