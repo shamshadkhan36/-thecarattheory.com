@@ -27,6 +27,7 @@ import { SizingModal } from './components/SizingModal';
 import { SearchModal } from './components/SearchModal';
 import { LogoGuideModal } from './components/LogoGuideModal';
 import { ProductPage } from './components/ProductPage';
+import { CheckoutModal } from './components/CheckoutModal';
 
 import { PRODUCTS_DATA, PRIMARY_PRODUCT } from './data/products';
 import { getStoredProducts } from './services/adminStore';
@@ -48,6 +49,8 @@ export function App() {
   const [appointmentSubject, setAppointmentSubject] = useState('');
   const [isSizingOpen, setIsSizingOpen] = useState(false);
   const [isLogoGuideOpen, setIsLogoGuideOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [checkoutDirectItem, setCheckoutDirectItem] = useState(null);
 
   // Catalog filtering state
   const [catalogCategory, setCatalogCategory] = useState('all');
@@ -168,6 +171,10 @@ export function App() {
                 onOpenSizing={() => setIsSizingOpen(true)}
                 onOpenAppointment={() => handleOpenAppointment('Lifetime Care & Dedicated Service Consultation')}
                 onSelectProduct={handleSelectProduct}
+                onBuyNow={(item) => {
+                  setCheckoutDirectItem(item);
+                  setIsCheckoutOpen(true);
+                }}
               />
             ) : (
               <>
@@ -227,7 +234,12 @@ export function App() {
             <FloatingWidgets onOpenAppointment={() => handleOpenAppointment()} />
 
             {/* Drawers & Modals */}
-            <CartDrawer />
+            <CartDrawer
+              onOpenCheckout={() => {
+                setCheckoutDirectItem(null);
+                setIsCheckoutOpen(true);
+              }}
+            />
             <WishlistDrawer />
             <QuickViewModal
               product={quickViewProduct}
@@ -252,6 +264,14 @@ export function App() {
             <LogoGuideModal
               isOpen={isLogoGuideOpen}
               onClose={() => setIsLogoGuideOpen(false)}
+            />
+            <CheckoutModal
+              isOpen={isCheckoutOpen}
+              onClose={() => {
+                setIsCheckoutOpen(false);
+                setCheckoutDirectItem(null);
+              }}
+              directItem={checkoutDirectItem}
             />
           </div>
         </WishlistProvider>

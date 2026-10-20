@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 
-export const CartDrawer = () => {
+export const CartDrawer = ({ onOpenCheckout }) => {
   const { cart, updateQty, removeFromCart, subtotal, isCartOpen, setIsCartOpen } = useCart();
   const { formatMoney } = useCurrency();
 
@@ -106,7 +106,10 @@ export const CartDrawer = () => {
               Taxes &amp; Armored Insurance calculated at checkout. Lifetime Care &amp; Service Guarantee applies. Odd ring sizes (e.g. 6.5) &amp; custom orders are final sale with no cancellations.
             </p>
             <button
-              onClick={() => alert('Proceeding to Encrypted 256-bit Secure Checkout...')}
+              onClick={() => {
+                setIsCartOpen(false);
+                if (onOpenCheckout) onOpenCheckout();
+              }}
               className="btn btn-primary"
               style={{ width: '100%' }}
             >

@@ -7,7 +7,8 @@ export const ProductPage = ({
   product = PRIMARY_PRODUCT,
   onOpenSizing,
   onOpenAppointment,
-  onSelectProduct
+  onSelectProduct,
+  onBuyNow
 }) => {
   const currencyCtx = useCurrency() || {};
   const { addToCart, setIsCartOpen } = useCart();
@@ -96,7 +97,25 @@ export const ProductPage = ({
   };
 
   const handleBuyNow = () => {
-    handleAddToCart(true);
+    const mainImg = imagesList[selectedImageIndex] || targetProduct.image;
+    const configuredItem = {
+      id: `${targetProduct.id}-${selectedPurity}-${selectedColor}-${selectedSize || '6.5'}`,
+      productId: targetProduct.id,
+      name: `${targetProduct.name} (${selectedPurity} - ${selectedColor.toUpperCase()})`,
+      price: currentPrice,
+      priceUSD: currentPrice,
+      image: mainImg,
+      metal: selectedPurity,
+      color: selectedColor,
+      size: selectedSize || 'US 6.5 (Standard Size)',
+      qty: quantity
+    };
+
+    if (onBuyNow) {
+      onBuyNow(configuredItem);
+    } else {
+      handleAddToCart(true);
+    }
   };
 
   const imagesList = Array.isArray(targetProduct.images) ? targetProduct.images : [];
@@ -508,8 +527,8 @@ export const ProductPage = ({
                         addToCart({
                           id: item.id,
                           name: item.name,
-                          priceINR: item.priceINR,
-                          priceUSD: item.priceUSD,
+                          price: item.priceUSD || item.price,
+                          priceUSD: item.priceUSD || item.price,
                           image: item.image,
                           metal: '18K',
                           color: 'Yellow'

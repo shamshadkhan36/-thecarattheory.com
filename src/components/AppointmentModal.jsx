@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { createNewAppointment } from '../services/adminStore';
 
 export const AppointmentModal = ({ isOpen, onClose, initialSubject = '' }) => {
   if (!isOpen) return null;
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [type, setType] = useState('Virtual Video Consultation (Zoom HD Macro)');
   const [notes, setNotes] = useState(initialSubject);
   const [submitted, setSubmitted] = useState(false);
@@ -12,13 +14,20 @@ export const AppointmentModal = ({ isOpen, onClose, initialSubject = '' }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      createNewAppointment({
+        name,
+        email,
+        phone: phone || '+1 (Private Client)',
+        subject: type,
+        notes: notes || 'Booked via storefront concierge.'
+      });
       await fetch('/api/appointments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, consultationType: type, notes })
-      });
+        body: JSON.stringify({ name, email, phone, consultationType: type, notes })
+      }).catch(() => {});
     } catch {
-      console.log('Appointment registered locally');
+      console.log('Appointment registered in admin store');
     }
     setSubmitted(true);
   };
@@ -95,6 +104,19 @@ export const AppointmentModal = ({ isOpen, onClose, initialSubject = '' }) => {
                   required
                 />
               </div>
+            </div>
+
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontFamily: 'var(--font-heading)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '0.35rem' }}>
+                Direct Phone / WhatsApp
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+1 (555) 000-0000"
+                style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--c-border)' }}
+              />
             </div>
 
             <div style={{ marginBottom: '1.5rem' }}>

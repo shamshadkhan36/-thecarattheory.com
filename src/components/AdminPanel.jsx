@@ -5,8 +5,10 @@ import {
   resetProductsCatalog,
   getStoredOrders,
   saveOrders,
+  clearAllOrders,
   getStoredAppointments,
   saveAppointments,
+  clearAllAppointments,
   getStoredSettings,
   saveSettings
 } from '../services/adminStore';
@@ -37,6 +39,38 @@ export const AdminPanel = ({ onBackToStorefront, onSelectProduct }) => {
   const showToast = (msg) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(''), 3000);
+  };
+
+  useEffect(() => {
+    const handleOrders = () => setOrders(getStoredOrders());
+    const handleApts = () => setAppointments(getStoredAppointments());
+    const handleProds = () => setProducts(getStoredProducts());
+
+    window.addEventListener('tct:orders-updated', handleOrders);
+    window.addEventListener('tct:appointments-updated', handleApts);
+    window.addEventListener('tct:catalog-updated', handleProds);
+
+    return () => {
+      window.removeEventListener('tct:orders-updated', handleOrders);
+      window.removeEventListener('tct:appointments-updated', handleApts);
+      window.removeEventListener('tct:catalog-updated', handleProds);
+    };
+  }, []);
+
+  const handleClearOrders = () => {
+    if (window.confirm('Are you sure you want to clear all orders? This will remove all placed client commissions.')) {
+      const remaining = clearAllOrders();
+      setOrders(remaining);
+      showToast('✓ All client orders cleared.');
+    }
+  };
+
+  const handleClearAppointments = () => {
+    if (window.confirm('Are you sure you want to clear all appointments?')) {
+      const remaining = clearAllAppointments();
+      setAppointments(remaining);
+      showToast('✓ All consultations cleared.');
+    }
   };
 
   // Product Filter State
@@ -538,54 +572,69 @@ export const AdminPanel = ({ onBackToStorefront, onSelectProduct }) => {
                   </button>
                 </div>
 
-                <table className="admin-table">
-                  <thead>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Customer</th>
-                      <th>Creation &amp; Size</th>
-                      <th>Amount (USD)</th>
-                      <th>Status</th>
-                      <th>Policy</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.slice(0, 4).map((ord) => (
-                      <tr key={ord.id}>
-                        <td><strong>{ord.id}</strong></td>
-                        <td>
-                          <div>{ord.customerName}</div>
-                          <span style={{ fontSize: '0.72rem', color: '#94A3B8' }}>{ord.customerEmail}</span>
-                        </td>
-                        <td>
-                          {ord.items.map((i, idx) => (
-                            <div key={idx}>
-                              <span>{i.name} ({i.purity})</span>
-                              <div style={{ fontSize: '0.72rem', color: i.isOddSize ? '#F59E0B' : '#94A3B8', fontWeight: i.isOddSize ? 600 : 400 }}>
-                                Size: {i.size} {i.isOddSize && '✦ Odd Size'}
-                              </div>
-                            </div>
-                          ))}
-                        </td>
-                        <td><strong style={{ color: '#F3E8FF' }}>${ord.totalAmountUSD.toLocaleString()}</strong></td>
-                        <td>
-                          <span className={`admin-status-badge ${ord.status.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
-                            {ord.status}
-                          </span>
-                        </td>
-                        <td>
-                          {ord.isNonCancellable ? (
-                            <span style={{ background: 'rgba(239, 68, 68, 0.2)', color: '#FCA5A5', padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 600 }}>
-                              NON-CANCELLABLE
-                            </span>
-                          ) : (
-                            <span style={{ color: '#94A3B8', fontSize: '0.72rem' }}>Standard Delivery</span>
-                          )}
-                        </td>
+                {orders.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#0B1824', borderRadius: '8px', border: '1px dashed #1E374D' }}>
+                    <div style={{ fontSize: '2.4rem', marginBottom: '0.75rem' }}>💎</div>
+                    <h4 style={{ color: '#F1F5F9', fontFamily: 'var(--font-heading)', fontSize: '1.2rem', marginBottom: '0.35rem' }}>
+                      No Customer Commissions Yet
+                    </h4>
+                    <p style={{ color: '#94A3B8', fontSize: '0.85rem', maxWidth: '440px', margin: '0 auto 1.25rem', lineHeight: '1.5' }}>
+                      All dummy orders have been cleared. Client orders placed through the boutique bag or checkout will appear here automatically with odd-size non-cancellation validation.
+                    </p>
+                    <button onClick={onBackToStorefront} className="admin-btn-secondary" style={{ fontSize: '0.82rem' }}>
+                      &larr; Return to Storefront
+                    </button>
+                  </div>
+                ) : (
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Creation &amp; Size</th>
+                        <th>Amount (USD)</th>
+                        <th>Status</th>
+                        <th>Policy</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {orders.slice(0, 4).map((ord) => (
+                        <tr key={ord.id}>
+                          <td><strong>{ord.id}</strong></td>
+                          <td>
+                            <div>{ord.customerName}</div>
+                            <span style={{ fontSize: '0.72rem', color: '#94A3B8' }}>{ord.customerEmail}</span>
+                          </td>
+                          <td>
+                            {ord.items.map((i, idx) => (
+                              <div key={idx}>
+                                <span>{i.name} ({i.purity})</span>
+                                <div style={{ fontSize: '0.72rem', color: i.isOddSize ? '#F59E0B' : '#94A3B8', fontWeight: i.isOddSize ? 600 : 400 }}>
+                                  Size: {i.size} {i.isOddSize && '✦ Odd Size'}
+                                </div>
+                              </div>
+                            ))}
+                          </td>
+                          <td><strong style={{ color: '#F3E8FF' }}>${ord.totalAmountUSD.toLocaleString()}</strong></td>
+                          <td>
+                            <span className={`admin-status-badge ${ord.status.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
+                              {ord.status}
+                            </span>
+                          </td>
+                          <td>
+                            {ord.isNonCancellable ? (
+                              <span style={{ background: 'rgba(239, 68, 68, 0.2)', color: '#FCA5A5', padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 600 }}>
+                                NON-CANCELLABLE
+                              </span>
+                            ) : (
+                              <span style={{ color: '#94A3B8', fontSize: '0.72rem' }}>Standard Delivery</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           )}
@@ -783,80 +832,100 @@ export const AdminPanel = ({ onBackToStorefront, onSelectProduct }) => {
                     Direct oversight of lab-grown diamond orders with non-cancellation odd-size compliance tracking.
                   </p>
                 </div>
+                {orders.length > 0 && (
+                  <button onClick={handleClearOrders} className="admin-btn-secondary" style={{ fontSize: '0.82rem', color: '#FCA5A5' }}>
+                    Clear All Orders
+                  </button>
+                )}
               </div>
 
               <div className="admin-card-container">
-                <table className="admin-table">
-                  <thead>
-                    <tr>
-                      <th>Order ID &amp; Date</th>
-                      <th>Client Details</th>
-                      <th>Jewellery Specification</th>
-                      <th>Amount (USD)</th>
-                      <th>Order Status</th>
-                      <th>Policy Check</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.map((ord) => (
-                      <tr key={ord.id}>
-                        <td>
-                          <strong style={{ color: '#FFFFFF', display: 'block' }}>{ord.id}</strong>
-                          <span style={{ fontSize: '0.72rem', color: '#94A3B8' }}>{ord.date}</span>
-                        </td>
-                        <td>
-                          <div style={{ fontWeight: 600 }}>{ord.customerName}</div>
-                          <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>{ord.customerEmail}</div>
-                          <div style={{ fontSize: '0.72rem', color: '#64748B' }}>{ord.shippingAddress}</div>
-                        </td>
-                        <td>
-                          {ord.items.map((i, idx) => (
-                            <div key={idx} style={{ marginBottom: '0.35rem' }}>
-                              <strong style={{ color: '#F3E8FF' }}>{i.name}</strong>
-                              <div style={{ fontSize: '0.75rem', color: '#CBD5E1' }}>
-                                Metal: {i.purity} &middot; Color: {i.color}
-                              </div>
-                              <div style={{ fontSize: '0.75rem', color: i.isOddSize ? '#F59E0B' : '#94A3B8', fontWeight: i.isOddSize ? 700 : 400 }}>
-                                Ring Size: {i.size} {i.isOddSize && '✦ Odd Size (No Cancellations)'}
-                              </div>
-                            </div>
-                          ))}
-                        </td>
-                        <td>
-                          <strong style={{ fontSize: '1.05rem', color: '#F2C94C' }}>
-                            ${ord.totalAmountUSD.toLocaleString()}
-                          </strong>
-                          <div style={{ fontSize: '0.7rem', color: '#94A3B8' }}>{ord.paymentStatus}</div>
-                        </td>
-                        <td>
-                          <select
-                            value={ord.status}
-                            onChange={(e) => handleOrderStatusChange(ord.id, e.target.value)}
-                            className="admin-select"
-                            style={{ fontSize: '0.8rem', padding: '0.35rem 0.5rem' }}
-                          >
-                            <option value="Pending Review">Pending Review</option>
-                            <option value="In Atelier Crafting">In Atelier Crafting</option>
-                            <option value="Insured Armored Transit">Insured Armored Transit</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                          </select>
-                        </td>
-                        <td>
-                          {ord.isNonCancellable ? (
-                            <span style={{ background: '#7F1D1D', color: '#FECACA', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 700, display: 'inline-block' }}>
-                              ODD SIZE PROTECTED
-                            </span>
-                          ) : (
-                            <span style={{ background: '#1E293B', color: '#94A3B8', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.7rem' }}>
-                              Standard Care
-                            </span>
-                          )}
-                        </td>
+                {orders.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '3.5rem 1.5rem', color: '#94A3B8' }}>
+                    <div style={{ fontSize: '2.8rem', marginBottom: '0.75rem' }}>💍</div>
+                    <h3 style={{ color: '#FFFFFF', fontFamily: 'var(--font-heading)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                      No Customer Orders Placed Yet
+                    </h3>
+                    <p style={{ fontSize: '0.88rem', maxWidth: '480px', margin: '0 auto 1.5rem', lineHeight: '1.5' }}>
+                      All dummy orders have been cleared. As clients place real commissions or configure creations in the storefront, their orders will appear here immediately.
+                    </p>
+                    <button onClick={onBackToStorefront} className="btn btn-primary" style={{ padding: '0.65rem 1.75rem', fontSize: '0.85rem' }}>
+                      &larr; Browse Storefront &amp; Place Order
+                    </button>
+                  </div>
+                ) : (
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID &amp; Date</th>
+                        <th>Client Details</th>
+                        <th>Jewellery Specification</th>
+                        <th>Amount (USD)</th>
+                        <th>Order Status</th>
+                        <th>Policy Check</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {orders.map((ord) => (
+                        <tr key={ord.id}>
+                          <td>
+                            <strong style={{ color: '#FFFFFF', display: 'block' }}>{ord.id}</strong>
+                            <span style={{ fontSize: '0.72rem', color: '#94A3B8' }}>{ord.date}</span>
+                          </td>
+                          <td>
+                            <div style={{ fontWeight: 600 }}>{ord.customerName}</div>
+                            <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>{ord.customerEmail}</div>
+                            <div style={{ fontSize: '0.72rem', color: '#64748B' }}>{ord.shippingAddress}</div>
+                          </td>
+                          <td>
+                            {ord.items.map((i, idx) => (
+                              <div key={idx} style={{ marginBottom: '0.35rem' }}>
+                                <strong style={{ color: '#F3E8FF' }}>{i.name}</strong>
+                                <div style={{ fontSize: '0.75rem', color: '#CBD5E1' }}>
+                                  Metal: {i.purity} &middot; Color: {i.color}
+                                </div>
+                                <div style={{ fontSize: '0.75rem', color: i.isOddSize ? '#F59E0B' : '#94A3B8', fontWeight: i.isOddSize ? 700 : 400 }}>
+                                  Ring Size: {i.size} {i.isOddSize && '✦ Odd Size (No Cancellations)'}
+                                </div>
+                              </div>
+                            ))}
+                          </td>
+                          <td>
+                            <strong style={{ fontSize: '1.05rem', color: '#F2C94C' }}>
+                              ${ord.totalAmountUSD.toLocaleString()}
+                            </strong>
+                            <div style={{ fontSize: '0.7rem', color: '#94A3B8' }}>{ord.paymentStatus}</div>
+                          </td>
+                          <td>
+                            <select
+                              value={ord.status}
+                              onChange={(e) => handleOrderStatusChange(ord.id, e.target.value)}
+                              className="admin-select"
+                              style={{ fontSize: '0.8rem', padding: '0.35rem 0.5rem' }}
+                            >
+                              <option value="Pending Review">Pending Review</option>
+                              <option value="In Atelier Crafting">In Atelier Crafting</option>
+                              <option value="Insured Armored Transit">Insured Armored Transit</option>
+                              <option value="Delivered">Delivered</option>
+                              <option value="Cancelled">Cancelled</option>
+                            </select>
+                          </td>
+                          <td>
+                            {ord.isNonCancellable ? (
+                              <span style={{ background: '#7F1D1D', color: '#FECACA', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 700, display: 'inline-block' }}>
+                                ODD SIZE PROTECTED
+                              </span>
+                            ) : (
+                              <span style={{ background: '#1E293B', color: '#94A3B8', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.7rem' }}>
+                                Standard Care
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           )}
@@ -871,55 +940,75 @@ export const AdminPanel = ({ onBackToStorefront, onSelectProduct }) => {
                     Direct appointments booked by clients seeking solitaire customization, sizing guidance, and diamond education.
                   </p>
                 </div>
+                {appointments.length > 0 && (
+                  <button onClick={handleClearAppointments} className="admin-btn-secondary" style={{ fontSize: '0.82rem', color: '#FCA5A5' }}>
+                    Clear All Consultations
+                  </button>
+                )}
               </div>
 
               <div className="admin-card-container">
-                <table className="admin-table">
-                  <thead>
-                    <tr>
-                      <th>Ref &amp; Date</th>
-                      <th>Client Name &amp; Contact</th>
-                      <th>Consultation Subject</th>
-                      <th>Notes &amp; Focus</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {appointments.map((apt) => (
-                      <tr key={apt.id}>
-                        <td>
-                          <strong style={{ color: '#FFFFFF' }}>{apt.id}</strong>
-                          <div style={{ fontSize: '0.75rem', color: '#93C5FD' }}>{apt.date} at {apt.time}</div>
-                        </td>
-                        <td>
-                          <div style={{ fontWeight: 600 }}>{apt.name}</div>
-                          <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>{apt.email}</div>
-                          <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>{apt.phone}</div>
-                        </td>
-                        <td>
-                          <strong style={{ color: '#FDE68A' }}>{apt.subject}</strong>
-                        </td>
-                        <td>
-                          <p style={{ margin: 0, fontSize: '0.8rem', color: '#CBD5E1', maxWidth: '300px' }}>
-                            {apt.notes}
-                          </p>
-                        </td>
-                        <td>
-                          <select
-                            value={apt.status}
-                            onChange={(e) => handleAppointmentStatusChange(apt.id, e.target.value)}
-                            className="admin-select"
-                            style={{ fontSize: '0.8rem', padding: '0.35rem 0.5rem' }}
-                          >
-                            <option value="Pending">Pending</option>
-                            <option value="Confirmed">Confirmed</option>
-                            <option value="Completed">Completed</option>
-                          </select>
-                        </td>
+                {appointments.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '3.5rem 1.5rem', color: '#94A3B8' }}>
+                    <div style={{ fontSize: '2.8rem', marginBottom: '0.75rem' }}>🗓</div>
+                    <h3 style={{ color: '#FFFFFF', fontFamily: 'var(--font-heading)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                      No Consultations Scheduled Yet
+                    </h3>
+                    <p style={{ fontSize: '0.88rem', maxWidth: '480px', margin: '0 auto 1.5rem', lineHeight: '1.5' }}>
+                      All dummy bookings have been cleared. As clients reserve VIP appointments or video consultations on the storefront, they will be listed here live.
+                    </p>
+                    <button onClick={onBackToStorefront} className="btn btn-primary" style={{ padding: '0.65rem 1.75rem', fontSize: '0.85rem' }}>
+                      &larr; Return to Storefront
+                    </button>
+                  </div>
+                ) : (
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Ref &amp; Date</th>
+                        <th>Client Name &amp; Contact</th>
+                        <th>Consultation Subject</th>
+                        <th>Notes &amp; Focus</th>
+                        <th>Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {appointments.map((apt) => (
+                        <tr key={apt.id}>
+                          <td>
+                            <strong style={{ color: '#FFFFFF' }}>{apt.id}</strong>
+                            <div style={{ fontSize: '0.75rem', color: '#93C5FD' }}>{apt.date} at {apt.time}</div>
+                          </td>
+                          <td>
+                            <div style={{ fontWeight: 600 }}>{apt.name}</div>
+                            <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>{apt.email}</div>
+                            <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>{apt.phone}</div>
+                          </td>
+                          <td>
+                            <strong style={{ color: '#FDE68A' }}>{apt.subject}</strong>
+                          </td>
+                          <td>
+                            <p style={{ margin: 0, fontSize: '0.8rem', color: '#CBD5E1', maxWidth: '300px' }}>
+                              {apt.notes}
+                            </p>
+                          </td>
+                          <td>
+                            <select
+                              value={apt.status}
+                              onChange={(e) => handleAppointmentStatusChange(apt.id, e.target.value)}
+                              className="admin-select"
+                              style={{ fontSize: '0.8rem', padding: '0.35rem 0.5rem' }}
+                            >
+                              <option value="Pending">Pending</option>
+                              <option value="Confirmed">Confirmed</option>
+                              <option value="Completed">Completed</option>
+                            </select>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           )}

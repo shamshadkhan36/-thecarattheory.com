@@ -1,150 +1,15 @@
-import defaultProducts from '../data/allProducts.json';
+import defaultProducts from '../data/allProducts.json' with { type: 'json' };
 
 const PRODUCTS_STORAGE_KEY = 'tct_catalog_products';
 const ORDERS_STORAGE_KEY = 'tct_admin_orders';
 const APPOINTMENTS_STORAGE_KEY = 'tct_admin_appointments';
 const SETTINGS_STORAGE_KEY = 'tct_admin_settings';
 
-// Default initial orders with odd size enforcement demonstration
-const INITIAL_ORDERS = [
-  {
-    id: 'TCT-ORD-1094',
-    customerName: 'Eleanor Vance',
-    customerEmail: 'e.vance@beverlyhills.com',
-    date: '2026-10-19',
-    items: [
-      {
-        name: 'Elina Halo Diamond Ring',
-        purity: '18K',
-        color: 'Yellow Gold',
-        size: 'US 6.5 (Standard Size)',
-        isOddSize: true,
-        price: 1535,
-        qty: 1
-      }
-    ],
-    totalAmountUSD: 1535,
-    status: 'In Atelier Crafting',
-    paymentStatus: 'Paid (Stripe / Amex)',
-    shippingAddress: '90210 Wilshire Blvd, Beverly Hills, CA 90212',
-    isNonCancellable: true,
-    policyNotice: 'Odd ring size 6.5 & bespoke craft. No cancellations permitted.'
-  },
-  {
-    id: 'TCT-ORD-1093',
-    customerName: 'Marcus Sterling',
-    customerEmail: 'marcus.sterling@manhattan.nyc',
-    date: '2026-10-18',
-    items: [
-      {
-        name: 'Lennon Three Stone Ring',
-        purity: '14K',
-        color: 'White Gold',
-        size: 'US 7.0',
-        isOddSize: false,
-        price: 770,
-        qty: 1
-      },
-      {
-        name: 'Evie Tennis Bracelet',
-        purity: '18K',
-        color: 'Yellow Gold',
-        size: '7.0 inch',
-        isOddSize: false,
-        price: 670,
-        qty: 1
-      }
-    ],
-    totalAmountUSD: 1440,
-    status: 'Insured Armored Transit',
-    paymentStatus: 'Paid (Apple Pay)',
-    shippingAddress: '432 Park Avenue, New York, NY 10022',
-    isNonCancellable: false,
-    policyNotice: 'Complimentary insured courier with Lifetime Care & Service Guarantee.'
-  },
-  {
-    id: 'TCT-ORD-1092',
-    customerName: 'Sophia Montgomery',
-    customerEmail: 's.montgomery@chicago.il',
-    date: '2026-10-17',
-    items: [
-      {
-        name: 'Custom Bespoke Oval Solitaire Ring',
-        purity: '18K',
-        color: 'Rose Gold',
-        size: 'US 6.25 (Custom Odd Size)',
-        isOddSize: true,
-        price: 2450,
-        qty: 1
-      }
-    ],
-    totalAmountUSD: 2450,
-    status: 'In Atelier Crafting',
-    paymentStatus: 'Paid (Wire Transfer)',
-    shippingAddress: '1100 Lake Shore Dr, Chicago, IL 60611',
-    isNonCancellable: true,
-    policyNotice: 'Custom bespoke odd size order. Strictly non-cancellable under T&C.'
-  },
-  {
-    id: 'TCT-ORD-1091',
-    customerName: 'David K. Laurent',
-    customerEmail: 'd.laurent@dallas.tx',
-    date: '2026-10-16',
-    items: [
-      {
-        name: 'Midnight Noir Diamond Hoops',
-        purity: '18K',
-        color: 'Yellow Gold',
-        size: 'One Size',
-        isOddSize: false,
-        price: 890,
-        qty: 1
-      }
-    ],
-    totalAmountUSD: 890,
-    status: 'Delivered',
-    paymentStatus: 'Paid (Visa)',
-    shippingAddress: '3819 Turtle Creek Blvd, Dallas, TX 75219',
-    isNonCancellable: false,
-    policyNotice: 'Delivered via armored courier with Certificate of Authenticity.'
-  }
-];
+// Clean initial empty state: Zero dummy orders
+const INITIAL_ORDERS = [];
 
-const INITIAL_APPOINTMENTS = [
-  {
-    id: 'APT-201',
-    name: 'Victoria Hawthorne',
-    email: 'v.hawthorne@greenwich.ct',
-    phone: '+1 (203) 555-0192',
-    date: '2026-10-22',
-    time: '2:00 PM EST',
-    subject: 'Bespoke 3.0 ct Oval Solitaire Ring Commission',
-    status: 'Confirmed',
-    notes: 'Client requests 18K Yellow Gold with hidden diamond halo.'
-  },
-  {
-    id: 'APT-202',
-    name: 'Julian Sterling',
-    email: 'j.sterling@london.uk',
-    phone: '+44 20 7946 0912',
-    date: '2026-10-23',
-    time: '11:00 AM EST',
-    subject: 'Ring Sizing & Odd Ring Size Verification (US 6.5)',
-    status: 'Pending',
-    notes: 'Wants confirmation on non-cancellation terms for size 6.5 engagement ring.'
-  },
-  {
-    id: 'APT-203',
-    name: 'Charlotte Dubois',
-    email: 'c.dubois@boston.ma',
-    phone: '+1 (617) 555-8371',
-    date: '2026-10-24',
-    time: '4:30 PM EST',
-    subject: 'Lifetime Care & Diamond Inspection Consultation',
-    status: 'Confirmed',
-    notes: 'Virtual jewelry inspection of prong settings and certificate authentication.'
-  }
-];
+// Clean initial empty state: Zero dummy appointments
+const INITIAL_APPOINTMENTS = [];
 
 const INITIAL_SETTINGS = {
   currency: 'USD ($)',
@@ -197,15 +62,20 @@ export const resetProductsCatalog = () => {
   }
 };
 
-/* --- Orders Storage Methods --- */
+/* --- Orders Storage Methods (No Dummy Orders) --- */
 export const getStoredOrders = () => {
-  if (typeof window === 'undefined') return INITIAL_ORDERS;
+  if (typeof window === 'undefined') return [];
   try {
     const raw = localStorage.getItem(ORDERS_STORAGE_KEY);
-    if (!raw) return INITIAL_ORDERS;
-    return JSON.parse(raw);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    // Filter out any legacy dummy seeded orders
+    const cleaned = Array.isArray(parsed)
+      ? parsed.filter((o) => o && !o.id?.startsWith('TCT-ORD-109'))
+      : [];
+    return cleaned;
   } catch (err) {
-    return INITIAL_ORDERS;
+    return [];
   }
 };
 
@@ -219,15 +89,63 @@ export const saveOrders = (orders) => {
   }
 };
 
+export const createNewOrder = (orderData) => {
+  const currentOrders = getStoredOrders();
+  const orderId = `TCT-ORD-${Math.floor(100000 + Math.random() * 900000)}`;
+  const dateStr = new Date().toISOString().split('T')[0];
+
+  // Check if any item has odd ring size (e.g. 6.5) or custom bespoke
+  const hasOddSizeOrCustom = orderData.items?.some((item) => {
+    const s = (item.size || '').toLowerCase();
+    return s.includes('6.5') || s.includes('odd') || s.includes('custom') || s.includes('bespoke');
+  });
+
+  const newOrder = {
+    id: orderId,
+    customerName: orderData.customerName || 'Private Client',
+    customerEmail: orderData.customerEmail || 'client@thecarattheory.com',
+    customerPhone: orderData.customerPhone || '',
+    date: dateStr,
+    items: orderData.items || [],
+    totalAmountUSD: orderData.totalAmountUSD || 0,
+    status: 'In Atelier Crafting',
+    paymentStatus: orderData.paymentStatus || 'Paid (Encrypted 256-bit)',
+    shippingAddress: orderData.shippingAddress || '2000 Town Center, Southfield MI 48075',
+    isNonCancellable: hasOddSizeOrCustom,
+    policyNotice: hasOddSizeOrCustom
+      ? 'Odd ring size (e.g. 6.5) or bespoke commission. Strictly non-cancellable under T&C.'
+      : 'Complimentary insured armored delivery with Lifetime Care & Service Guarantee.'
+  };
+
+  const updatedOrders = [newOrder, ...currentOrders];
+  saveOrders(updatedOrders);
+  return newOrder;
+};
+
+export const clearAllOrders = () => {
+  if (typeof window === 'undefined') return [];
+  try {
+    localStorage.removeItem(ORDERS_STORAGE_KEY);
+    window.dispatchEvent(new Event('tct:orders-updated'));
+    return [];
+  } catch (err) {
+    return [];
+  }
+};
+
 /* --- Appointments Storage Methods --- */
 export const getStoredAppointments = () => {
-  if (typeof window === 'undefined') return INITIAL_APPOINTMENTS;
+  if (typeof window === 'undefined') return [];
   try {
     const raw = localStorage.getItem(APPOINTMENTS_STORAGE_KEY);
-    if (!raw) return INITIAL_APPOINTMENTS;
-    return JSON.parse(raw);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    const cleaned = Array.isArray(parsed)
+      ? parsed.filter((a) => a && !a.id?.startsWith('APT-20'))
+      : [];
+    return cleaned;
   } catch (err) {
-    return INITIAL_APPOINTMENTS;
+    return [];
   }
 };
 
@@ -238,6 +156,39 @@ export const saveAppointments = (appointments) => {
     window.dispatchEvent(new Event('tct:appointments-updated'));
   } catch (err) {
     console.error('Error saving appointments:', err);
+  }
+};
+
+export const createNewAppointment = (aptData) => {
+  const currentApts = getStoredAppointments();
+  const aptId = `APT-${Math.floor(1000 + Math.random() * 9000)}`;
+  const dateStr = aptData.date || new Date().toISOString().split('T')[0];
+
+  const newApt = {
+    id: aptId,
+    name: aptData.name || 'Private Client',
+    email: aptData.email || 'client@thecarattheory.com',
+    phone: aptData.phone || '+1 Direct Line',
+    date: dateStr,
+    time: aptData.time || '2:00 PM EST',
+    subject: aptData.subject || 'Diamond Consultation',
+    status: 'Pending',
+    notes: aptData.notes || 'Booked via storefront concierge.'
+  };
+
+  const updated = [newApt, ...currentApts];
+  saveAppointments(updated);
+  return newApt;
+};
+
+export const clearAllAppointments = () => {
+  if (typeof window === 'undefined') return [];
+  try {
+    localStorage.removeItem(APPOINTMENTS_STORAGE_KEY);
+    window.dispatchEvent(new Event('tct:appointments-updated'));
+    return [];
+  } catch (err) {
+    return [];
   }
 };
 
