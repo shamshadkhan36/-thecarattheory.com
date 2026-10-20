@@ -1,3 +1,7 @@
+import allProductsData from './allProducts.json';
+
+export const ALL_PRODUCTS = allProductsData;
+
 export const PRIMARY_PRODUCT = {
   id: "ring-lennon",
   name: "Lennon Three Stone Ring",
@@ -162,106 +166,4 @@ export const SHAPES_DATA = [
   { name: "HEART", image: "/assets/shapes/heart.png" }
 ];
 
-export const PRODUCTS_DATA = [
-  {
-    id: "tct-ring-01",
-    name: "Kyla Three Stone Ring",
-    category: "rings",
-    subCategory: "three-stone",
-    shape: "oval",
-    basePrice: 1245,
-    rating: 5.0,
-    reviewsCount: 38,
-    isBestseller: true,
-    certification: "IGI & GIA Certified",
-    diamondGrade: "D-F Color · VVS1-VS1 Clarity · Ideal Cut",
-    badge: "Bestseller",
-    description: "An architectural icon of balanced harmony with three graduated brilliant diamonds.",
-    metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-three-stone-yellow.jpg" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
-    ],
-    carats: [
-      { carat: 1.0, multiplier: 1.0, label: "1.00 Carat" },
-      { carat: 1.5, multiplier: 1.45, label: "1.50 Carat" },
-      { carat: 2.0, multiplier: 2.15, label: "2.00 Carat" }
-    ],
-    details: ["Solid 14k/18k Gold or 925 Silver", "IGI Certified Type IIa", "Lifetime Care & Service Guarantee"]
-  },
-  {
-    id: "tct-ring-02",
-    name: "Mabel Three Stone Ring",
-    category: "rings",
-    subCategory: "three-stone",
-    shape: "round",
-    basePrice: 450,
-    rating: 4.9,
-    reviewsCount: 52,
-    isBestseller: true,
-    certification: "IGI Certified",
-    diamondGrade: "E Color · VVS2 Clarity",
-    badge: "Trending",
-    description: "Three scintillating round brilliant cut stones mounted in classic claw prongs.",
-    metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-solitaire-ring.jpg" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
-    ],
-    carats: [
-      { carat: 1.0, multiplier: 1.0, label: "1.00 Carat" },
-      { carat: 1.5, multiplier: 1.48, label: "1.50 Carat" }
-    ],
-    details: ["Comfort Fit Band", "Hand-finished setting", "Free insured shipping"]
-  },
-  {
-    id: "tct-ring-03",
-    name: "Kennedi Three Stone Ring",
-    category: "rings",
-    subCategory: "three-stone",
-    shape: "round",
-    basePrice: 1115,
-    rating: 5.0,
-    reviewsCount: 29,
-    isBestseller: true,
-    certification: "GIA Certified",
-    diamondGrade: "D Color · VVS1 Clarity",
-    badge: "Iconic",
-    description: "Prominent round brilliant flanked by two pear side diamonds.",
-    metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-tennis-bracelet.jpg" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
-    ],
-    carats: [
-      { carat: 1.5, multiplier: 1.0, label: "1.50 Carat" },
-      { carat: 2.0, multiplier: 1.55, label: "2.00 Carat" }
-    ],
-    details: ["Precision 4-prong setting", "Conflict-free lab engineered", "Certificate of Authenticity"]
-  },
-  {
-    id: "tct-ring-04",
-    name: "Carmen Three Stone Ring",
-    category: "rings",
-    subCategory: "three-stone",
-    shape: "oval",
-    basePrice: 360,
-    rating: 4.8,
-    reviewsCount: 34,
-    isBestseller: true,
-    certification: "IGI Certified",
-    diamondGrade: "F Color · VS1 Clarity",
-    badge: "Special",
-    description: "Three matched oval cut stones resting side by side with endless fire.",
-    metals: [
-      { name: "18K Yellow Gold", code: "yg", color: "#E5C278", premium: 0, image: "/assets/products/tct-tennis-necklace.jpg" },
-      { name: "18K White Gold", code: "wg", color: "#E0E3E8", premium: 0, image: "/assets/products/tct-three-stone-white.jpg" },
-      { name: "18K Rose Gold", code: "rg", color: "#E8B2A7", premium: 50, image: "/assets/products/tct-three-stone-rose.jpg" }
-    ],
-    carats: [
-      { carat: 1.0, multiplier: 1.0, label: "1.00 Carat" },
-      { carat: 1.5, multiplier: 1.5, label: "1.50 Carat" }
-    ],
-    details: ["Triple oval symmetry", "Recycled gold alloy", "Lifetime polishing"]
-  }
-];
+export const PRODUCTS_DATA = allProductsData;

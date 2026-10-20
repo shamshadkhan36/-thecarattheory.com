@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { MegaMenu } from './MegaMenu';
 
-export const Header = ({ onOpenSearch, onOpenAppointment, onNavigateHome }) => {
+export const Header = ({ onOpenSearch, onOpenAppointment, onNavigateHome, onSelectCategory }) => {
   const { cartCount, setIsCartOpen } = useCart();
   const { wishlistCount } = useWishlist();
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -120,6 +120,7 @@ export const Header = ({ onOpenSearch, onOpenAppointment, onNavigateHome }) => {
       <MegaMenu
         type={activeMegaMenu}
         onClose={() => setActiveMegaMenu(null)}
+        onSelectCategory={onSelectCategory}
       />
     </header>
   );

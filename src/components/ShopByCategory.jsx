@@ -1,7 +1,19 @@
 import React from 'react';
 import { CATEGORIES_DATA } from '../data/products';
 
-export const ShopByCategory = () => {
+export const ShopByCategory = ({ onSelectCategory }) => {
+  const handleCategoryClick = (catName, e) => {
+    e.preventDefault();
+    const catId = catName.toLowerCase().replace(/\s+/g, '');
+    if (onSelectCategory) {
+      onSelectCategory(catId);
+    }
+    const collectionElem = document.getElementById('collection');
+    if (collectionElem) {
+      collectionElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="section-padding cat-section-ref">
       <div className="container">
@@ -12,7 +24,12 @@ export const ShopByCategory = () => {
 
         <div className="cat-cards-grid-ref">
           {CATEGORIES_DATA.map((cat) => (
-            <a key={cat.name} href={cat.link} className="cat-card-ref">
+            <a
+              key={cat.name}
+              href="#collection"
+              onClick={(e) => handleCategoryClick(cat.name, e)}
+              className="cat-card-ref"
+            >
               <div className="cat-card-img-wrap">
                 <img src={cat.image} alt={cat.name} />
               </div>

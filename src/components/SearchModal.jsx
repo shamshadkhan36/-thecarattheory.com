@@ -71,16 +71,20 @@ export const SearchModal = ({ isOpen, onClose, products, onSelectProduct }) => {
                   }}
                 >
                   <img
-                    src={prod.metals[0].image}
+                    src={prod.image || (prod.images && prod.images[0]?.src) || '/assets/products/tct-three-stone-yellow.jpg'}
                     alt={prod.name}
-                    style={{ width: '48px', height: '48px', objectFit: 'cover' }}
+                    style={{ width: '48px', height: '48px', objectFit: 'contain', background: '#F8F8F8', borderRadius: '4px' }}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = '/assets/products/tct-three-stone-yellow.jpg';
+                    }}
                   />
                   <div>
                     <h5 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.88rem', textTransform: 'uppercase', marginBottom: '0.2rem' }}>
                       {prod.name}
                     </h5>
                     <span style={{ fontSize: '0.8rem', color: 'var(--c-wine)', fontWeight: 600 }}>
-                      {formatMoney(prod.basePrice)}
+                      {formatMoney(prod.priceUSD || prod.basePrice || 940)}
                     </span>
                   </div>
                 </div>

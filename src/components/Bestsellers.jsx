@@ -43,7 +43,7 @@ export const Bestsellers = ({ onQuickView, onSelectProduct }) => {
   };
 
   return (
-    <section className="section-padding bestsellers-section-ref" id="collection">
+    <section className="section-padding bestsellers-section-ref" id="bestsellers">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h2 className="title-ref">BESTSELLERS</h2>
