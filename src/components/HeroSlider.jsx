@@ -5,6 +5,11 @@ export const HeroSlider = () => {
 
   const slides = [
     {
+      video: '/assets/hero-video.mp4',
+      poster: '/assets/hero-video-poster.jpg',
+      alt: 'The Carat Theory Fine Jewellery Editorial Collection'
+    },
+    {
       image: '/assets/hero-banner.jpg',
       alt: 'The Carat Theory Fine Jewellery Editorial Collection'
     },
@@ -14,14 +19,28 @@ export const HeroSlider = () => {
     }
   ];
 
+  const current = slides[currentSlide];
+
   return (
     <section className="hero-slider-section-ref">
       <div className="hero-slide-item-ref">
-        <img
-          src={slides[currentSlide].image}
-          alt={slides[currentSlide].alt}
-          className="hero-slide-img-ref"
-        />
+        {current.video ? (
+          <video
+            src={current.video}
+            poster={current.poster}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="hero-slide-img-ref"
+          />
+        ) : (
+          <img
+            src={current.image}
+            alt={current.alt}
+            className="hero-slide-img-ref"
+          />
+        )}
       </div>
 
       {/* Navigation Arrows on Left and Right (thin stroke matching screenshot 1) */}

@@ -9,6 +9,9 @@ dist/
 .env
 .env.local
 
+# Temporary / raw media drops in root
+/*.mp4
+
 # Editor files
 .vscode/
 .idea/

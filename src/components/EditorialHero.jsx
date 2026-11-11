@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export const EditorialHero = ({ onShopRings, onShopJewelry, onSelectProduct }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        setIsPlaying(false);
+      });
+    }
+  }, []);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
   const spotlightItems = [
     {
       id: 'spotlight-1',
@@ -71,17 +93,49 @@ export const EditorialHero = ({ onShopRings, onShopJewelry, onSelectProduct }) =
 
   return (
     <section className="editorial-hero-theme">
-      {/* Background Model Image with Gradient Fade */}
+      {/* Background Editorial Video with Poster & Gradient Overlay */}
       <div className="editorial-hero-bg">
-        <picture>
-          <source media="(max-width: 768px)" srcSet="/assets/editorial-model-original.jpg" />
-          <img
-            src="/assets/editorial-hero-banner.jpg"
-            alt="The Carat Theory High Jewelry Collection"
-            className="editorial-hero-img"
-          />
-        </picture>
+        <video
+          ref={videoRef}
+          className="editorial-hero-video"
+          poster="/assets/hero-video-poster.jpg"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src="/assets/hero-video.mp4" type="video/mp4" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/assets/editorial-model-original.jpg" />
+            <img
+              src="/assets/editorial-hero-banner.jpg"
+              alt="The Carat Theory High Jewelry Collection"
+              className="editorial-hero-img"
+            />
+          </picture>
+        </video>
         <div className="editorial-hero-gradient-overlay" />
+
+        {/* Ambient Play/Pause Toggle */}
+        <button
+          type="button"
+          className="editorial-hero-playback-toggle"
+          onClick={togglePlay}
+          aria-label={isPlaying ? 'Pause background video' : 'Play background video'}
+          title={isPlaying ? 'Pause video' : 'Play video'}
+        >
+          {isPlaying ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20" />
+            </svg>
+          )}
+        </button>
       </div>
 
       {/* Floating Foreground Content matching Screenshot 1 */}
