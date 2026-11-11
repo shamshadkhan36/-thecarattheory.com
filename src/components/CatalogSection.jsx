@@ -338,14 +338,7 @@ export const CatalogSection = ({
         )}
 
         {/* Products Grid: 4 columns desktop, 3 tablet, 2 mobile */}
-        <div
-          className="catalog-products-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '2.5rem 1.75rem'
-          }}
-        >
+        <div className="catalog-products-grid">
           {displayedProducts.map((prod) => {
             const activePurity = cardPurities[prod.id] || '18K';
             const activeColor = cardColors[prod.id] || 'yellow';
@@ -362,17 +355,6 @@ export const CatalogSection = ({
                 className="catalog-product-card"
                 onMouseEnter={() => setHoveredCard(prod.id)}
                 onMouseLeave={() => setHoveredCard(null)}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  background: '#FFFFFF',
-                  border: '1px solid var(--c-border)',
-                  padding: '1.25rem',
-                  position: 'relative',
-                  transition: 'all 0.25s ease',
-                  boxShadow: isHovered ? '0 10px 24px rgba(85, 20, 42, 0.08)' : 'none',
-                  borderColor: isHovered ? 'var(--c-wine)' : 'var(--c-border)'
-                }}
               >
                 {/* Shape / Badge Tag */}
                 <div style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 2 }}>

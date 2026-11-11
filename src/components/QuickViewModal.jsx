@@ -77,12 +77,12 @@ export const QuickViewModal = ({ product, onClose, onSelectProduct }) => {
       <div className="modal-box" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '820px' }}>
         <button className="modal-close-corner" onClick={onClose}>&times;</button>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: '2rem' }}>
-          <div style={{ background: '#FFFFFF', minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', borderRight: '1px solid var(--c-border)' }}>
+        <div className="quickview-grid">
+          <div className="quickview-image-col">
             <img
               src={primaryImg}
               alt={product.name}
-              style={{ width: '100%', maxHeight: '360px', objectFit: 'contain' }}
+              className="quickview-main-img"
               onError={(e) => {
                 e.currentTarget.onerror = null;
                 e.currentTarget.src = '/assets/products/tct-three-stone-yellow.jpg';
@@ -90,7 +90,7 @@ export const QuickViewModal = ({ product, onClose, onSelectProduct }) => {
             />
           </div>
 
-          <div style={{ padding: '2rem 2rem 2rem 0', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="quickview-details-col">
             <div>
               <span style={{ fontSize: '0.75rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--c-wine)', fontWeight: 600 }}>
                 {product.categoryLabel || product.category || 'Fine Jewellery'} · {product.shape || 'Round'} Cut

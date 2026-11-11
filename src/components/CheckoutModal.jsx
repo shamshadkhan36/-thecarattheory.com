@@ -99,13 +99,12 @@ export const CheckoutModal = ({ isOpen, onClose, directItem = null }) => {
   return (
     <div className="modal-backdrop" onClick={handleResetAndClose} style={{ zIndex: 9999 }}>
       <div
-        className="modal-box"
+        className="modal-box checkout-modal-box"
         onClick={(e) => e.stopPropagation()}
         style={{
           maxWidth: '720px',
           maxHeight: '92vh',
           overflowY: 'auto',
-          padding: '2.5rem',
           borderRadius: '12px',
           background: '#FFFFFF',
           color: '#18181B',

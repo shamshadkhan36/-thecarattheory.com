@@ -34,7 +34,7 @@ export const AppointmentModal = ({ isOpen, onClose, initialSubject = '' }) => {
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-box" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '580px', padding: '2.5rem' }}>
+      <div className="modal-box appointment-modal-box" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '580px' }}>
         <button className="modal-close-corner" onClick={onClose}>&times;</button>
 
         {submitted ? (
