@@ -12,6 +12,11 @@ dist/
 # Temporary / raw media drops in root
 /*.mp4
 
+# SSH keys
+id_rsa*
+*.ppk
+*.pub
+
 # Editor files
 .vscode/
 .idea/
